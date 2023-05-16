@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <input id="iptPokemon" list="listPokemon">
+    <datalist id="listPokemon" style="height:5.1em;overflow:hidden">
+        <!--1--><option>Bulbasaur</option>
+        <!--2--><option>Ivysaur</option>
+        <!--3--><option>Venusaur</option>
+        <!--4--><option>Charmander</option>
+        <!--5--><option>Charmeleon</option>
+        <!--6--><option>Charizard</option>
+        <!--7--><option>Squirtle</option>
+        <!--8--><option>Wartortle</option>
+        <!--9--><option>Blastoise</option>
+        <!--10--><option>Caterpie</option>
+        <!--11--><option>Metapod</option>
+        <!--12--><option>Butterfree</option>
+        <!--13--><option>Weedle</option>
+        <!--14--><option>Kakuna</option>
+        <!--15--><option>Beedrill</option>
+        <!--16--><option>Pidgey</option>
+        <!--17--><option>Pidgeotto</option>
+        <!--18--><option>Pidgeot</option>
+        <!--19--><option>Rattata</option>
+        <!--19.1--><option>Rattata-alola</option>
+        <!--20--><option>Raticate</option>
+        <!--20.1--><option>Raticate-alola</option>
+        <!--21--><option>Spearow</option>
+        <!--22--><option>Fearow</option>
+        <!--23--><option>Ekans</option>
+        <!--24--><option>Arbok</option>
+        <!--25--><option>Pikachu</option>
+        <!--26--><option>Raichu</option>
+        <!--26.1--><option>Raichu-alola</option>
+        <!--27--><option>Sandshrew</option>
+        <!--27.1--><option>Sandshrew-alola</option>
+        <!--28--><option>Sandslash</option>
+        <!--28.1--><option>Sandslash-alola</option>
+        <!--29--><option>Nidoran-F</option>
+        <!--30--><option>Nidorina</option>
+        <!--31--><option>Nidoqueen</option>
+        <!--32--><option>Nidoran-M</option>
+        <!--33--><option>Nidorino</option>
+        <!--34--><option>Nidoking</option>
+        <!--35--><option>Clefairy</option>
+        <!--36--><option>Clefable</option>
+        <!--37--><option>Vulpix</option>
+        <!--37.1--><option>Vulpix-alola</option>
+        <!--38--><option>Ninetales</option>
+        <!--38.1--><option>Ninetales-alola</option>
+        <!--39--><option>Jigglypuff</option>
+        <!--40--><option>Wigglytuff</option>
+        <!--41--><option>Zubat</option>
+        <!--42--><option>Golbat</option>
+        <!--43--><option>Oddish</option>
+        <!--44--><option>Gloom</option>
+        <!--45--><option>Vileplume</option>
+        <!--46--><option>Paras</option>
+        <!--47--><option>Parasect</option>
+        <!--48--><option>Venonat</option>
+        <!--49--><option>Venomoth</option>
+        <!--50--><option>Diglett</option>
+        <!--50.1--><option>Diglett-alola</option>
+        <!--51--><option>Dugtrio</option>
+        <!--51.1--><option>Dugtrio-alola</option>
+        <!--52--><option>Meowth</option>
+        <!--52.1--><option>Meowth-alola</option>
+        <!--52.2--><option>Meowath-galar</option>
+        <!--53--><option>Persian</option>
+        <!--53.1--><option>Persian-alola</option>
+        <!--54--><option>Psyduck</option>
+        <!--55--><option>Golduck</option>
+        <!--56--><option>Mankey</option>
+        <!--57--><option>Primeape</option>
+        <!--58--><option>Growlithe</option>
+        <!--58.1--><option>Growlithe-hisui</option>
+        <!--59--><option>Arcanine</option>
+        <!--59.1--><option>Arcanine-hisui</option>
+        <!--60--><option>Poliwag</option>
+        <!--61--><option>Poliwhirl</option>
+        <!--62--><option>Poliwrath</option>
+        <!--63--><option>Abra</option>
+        <!--64--><option>Kadabra</option>
+        <!--65--><option>Alakazam</option>
+        <!--66--><option>Machop</option>
+        <!--67--><option>Machoke</option>
+        <!--68--><option>Machamp</option>
+        <!--69--><option>Bellsprout</option>
+        <!--70--><option>Weepinbell</option>
+        <!--71--><option>Victribel</option>
+        <!--72--><option>Tentacool</option>
+        <!--73--><option>Tentacruel</option>
+        <!--74--><option>Geodude</option>
+        <!--74.1--><option>Geodude-alola</option>
+        <!--75--><option>Graveler</option>
+        <!--75.1--><option>Graveler-alola</option>
+        <!--76--><option>Golem</option>
+        <!--76.1--><option>Golem-alola</option>
+        <!--77--><option>Ponyta</option>
+        <!--77.1--><option>Ponyta-galar</option>
+        <!--78--><option>Rapidash</option>
+        <!--78.1--><option>Rapidash-galar</option>
+
+    </datalist> 
+    <button onclick="fetchPokemon((iptPokemon.value).toLowerCase())">Search</button>
+    <br><br>
+    <div id="divContent"></div><br>
+    <img id="imgPokemon" src="" alt="" style="height: 200px;">
+</body>
+</html>
