@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <input id="iptPokemon" list="listPokemon">
-    <datalist id="listPokemon" style="height:5.1em;overflow:hidden">
+    <datalist id="listPokemon">
         <!--1--><option>Bulbasaur</option>
         <!--2--><option>Ivysaur</option>
         <!--3--><option>Venusaur</option>
@@ -202,7 +204,10 @@
     </datalist> 
     <button onclick="fetchPokemon((iptPokemon.value).toLowerCase())">Search</button>
     <br><br>
-    <div id="divContent"></div><br>
-    <img id="imgPokemon" src="" alt="" style="height: 200px;">
+    <div id="divTexto"></div><br>
+    <div class="content">
+        <img id="imgPokemon" src="" alt="">
+        <div id="divStats"></div>
+    </div>
 </body>
 </html>
