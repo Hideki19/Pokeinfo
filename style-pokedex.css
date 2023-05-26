@@ -1,0 +1,22 @@
+input {
+    border: 2px solid purple;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid purple;
+}
+
+.content {
+    display: flex; 
+    flex-direction: row;
+}
+
+#imgPokemon {
+    height: 300px;
+}
+
+#divStats {
+    height: 300px; 
+    width: fit-content;
+}

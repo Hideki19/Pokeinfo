@@ -50,3 +50,10 @@ function grafico() {
         }
     });
 }
+
+// async function fetchEvoLine(id) {
+//     var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+//     var data = await response.json();
+//     console.log(data);
+    
+// }
