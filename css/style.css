@@ -116,7 +116,7 @@ header .container #ul_header #header_buttons #btn_cadastrar{
     opacity: 0.5;
 }
 
-#banner .titulo {
+.titulo {
     position: absolute;
     color: #EDF2F4;
     font-weight: 700;
@@ -187,7 +187,7 @@ header .container #ul_header #header_buttons #btn_cadastrar{
     border-radius: 30px;
     margin-top: 10%;
     position: relative;
-    right: 370px;
+    right: 20vw;
 }
 
 #cards #card_1 #card_1_texto {
@@ -195,7 +195,7 @@ header .container #ul_header #header_buttons #btn_cadastrar{
     height: 550px;
     background: #EDF2F4;
     position: absolute;
-    left: 892px; 
+    left: 45vw; 
     border-radius: 30px;
     margin-top: 15%;
 }
@@ -203,7 +203,7 @@ header .container #ul_header #header_buttons #btn_cadastrar{
 #cards #card_1 .card_texto {
     width: 700px;
     position: absolute;
-    left: 930px;
+    left: 47vw;
     font-size: 36px;
     text-align: justify;
     margin-top: 15%;
@@ -239,6 +239,12 @@ header .container #ul_header #header_buttons #btn_cadastrar{
 
 /*---------------INÍCIO CARD 3-------------------*/
 
+#card {
+    display: flex;
+    justify-content: flex-end; 
+}
+
+
 #card_3 {
     width: 1200px;
     height: 0;
@@ -247,7 +253,6 @@ header .container #ul_header #header_buttons #btn_cadastrar{
     border-top: 200px solid #EDF2F4;
     border-bottom: 200px solid #EDF2F4;
     position: relative;
-    left: 564px;
     margin-top: 10%;
 }
 
