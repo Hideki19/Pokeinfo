@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    font-family: 'Hind', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #2B2D42;
+}
+
+button {
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+.red_text {
+    color: #D90429;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+}
+
+/* --------------------INÍCIO HEADER--------------------------------- */
+
+header {
+    background-color: #8D99AE;
+}
+
+header .container {
+    display: flex;
+    height: 90px; 
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .container #logo {
+    height: 50%;
+}
+
+header .container #ul_header {
+    display: flex;
+    width: 70%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    list-style: none;
+    color: #2B2D42;
+    font-size: 24px;
+    gap: 10%;
+}
+
+header .container #ul_header #header_buttons {
+    display: flex;
+    width: fit-content;
+    flex-direction: row;
+    gap: 20px;
+    /* justify-content: flex-end; */
+}
+
+header .container #ul_header #header_buttons .li_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 130px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+header .container #ul_header #header_buttons #btn_login{
+    color: #EF233C;
+    outline: solid 1px #EF233C;
+    outline-offset: -1px;
+    background-color: #EDF2F4;
+}
+
+header .container #ul_header #header_buttons #btn_cadastrar{
+    color: #EDF2F4;
+    background-color: #EF233C;
+}
+
+/*--------------------FIM HEADER---------------------------------*/
+
+/*--------------------INÍCIO BANNER---------------------------------*/
+
+#banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 850px;
+    position: relative;
+    background-color: #000000;
+}
+
+#banner::before {
+    content: "";
+    position: absolute;
+    background-image: url("../assets/tumblr_static_tumblr_static_ab9lidwv2x44o8c8ww8ggkw48_focused_v3.gif");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-y: bottom;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px; 
+    opacity: 0.5;
+}
+
+#banner .titulo {
+    position: absolute;
+    color: #EDF2F4;
+    font-weight: 700;
+    font-size: 48px;
+    opacity: 1;
+}
+
+/*--------------------FIM BANNER---------------------------------*/
+
+/*--------------------INÍCIO CARDS---------------------------------*/
+
+#cards {
+    height: fit-content;
+    background: linear-gradient(180deg, #354C73 0%, #8D99AE 53.12%, #354C73 100%); 
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    width: 60%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card_titulo {
+    font-weight: 800;
+    font-size: 48px;
+    text-align: center;
+    color: #EF233C;
+}
+
+.card_subtitulo {
+    font-weight: 500;
+    font-size: 30px;
+    text-align: center;
+    color: #2B2D42;
+}
+
+.card_button {
+    width: 200px;
+    height: 75px;
+    border-radius: 20px;
+    font-size: 30px;
+    color: #EDF2F4;
+    background-color: #EF233C;
+}
+
+/*---------------INÍCIO CARD 1-------------------*/
+
+#cards #card_1 {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#cards #card_1 #card_1_img {
+    width: 800px;
+    height: 550px;
+    background: url("../assets/dez9lrg-af2e5ca2-0df2-4d42-ab26-5a90cb94456a.gif");
+    background-position: center center;
+    background-size: cover;
+    border-radius: 30px;
+    margin-top: 10%;
+    position: relative;
+    right: 370px;
+}
+
+#cards #card_1 #card_1_texto {
+    width: 800px;
+    height: 550px;
+    background: #EDF2F4;
+    position: absolute;
+    left: 892px; 
+    border-radius: 30px;
+    margin-top: 15%;
+}
+
+#cards #card_1 .card_texto {
+    width: 700px;
+    position: absolute;
+    left: 930px;
+    font-size: 36px;
+    text-align: justify;
+    margin-top: 15%;
+    line-height: 50px;
+}
+
+/*---------------FIM CARD 1-------------------*/
+
+/*---------------INÍCIO CARD 2-------------------*/
+
+#card_2 {
+    width: 1200px;
+    height: 0;
+    border-right: 100px solid transparent;
+    border-left: none;
+    border-top: 200px solid #EDF2F4;
+    border-bottom: 200px solid #EDF2F4;
+    margin-top: 10%;
+}
+
+#card_2 .container {
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#card_2 .container img {
+    height: 300px;
+    transform: rotate(15deg);
+}
+
+/*---------------FIM CARD 2-------------------*/
+
+/*---------------INÍCIO CARD 3-------------------*/
+
+#card_3 {
+    width: 1200px;
+    height: 0;
+    border-right: none;
+    border-left: 100px solid transparent;
+    border-top: 200px solid #EDF2F4;
+    border-bottom: 200px solid #EDF2F4;
+    position: relative;
+    left: 564px;
+    margin-top: 10%;
+}
+
+#card_3 .container {
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#card_3 .container img {
+    height: 300px;
+}
+
+/*---------------FIM CARD 3-------------------*/
+
+/*---------------INÍCIO CARD 4-------------------*/
+
+#card_4 {
+    width: 1200px;
+    height: 0;
+    border-right: 100px solid transparent;
+    border-left: none;
+    border-top: 200px solid #EDF2F4;
+    border-bottom: 200px solid #EDF2F4;
+    margin-top: 10%;
+    margin-bottom: 50px;
+}
+
+#card_4 .container {
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#card_4 .container img {
+    height: 300px;
+}
+
+/*---------------FIM CARD 4-------------------*/
