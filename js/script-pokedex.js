@@ -65,8 +65,38 @@ async function fetchPokemon(id) {
         }
         console.log(fetchPokemonStats);
     // Pegar os stats do pokemon
-    
-    grafico();
+
+    // Linha evolutiva
+        var response = await fetch(data.species.url);
+        var data = await response.json();
+        console.log(response.url);
+
+        var response = await fetch(data.evolution_chain.url);
+        var data = await response.json();
+        console.log(response.url);
+
+        if (data.chain.evolves_to.length == 0) {
+            var firstEvo = data.chain.species.name;
+            console.log(firstEvo);
+        } else {
+            return grafico();
+        }
+        if (data.chain.evolves_to.length > 0) {
+            var secondEvo = data.chain.evolves_to[0].species.name; 
+            console.log(secondEvo);
+        } else {
+            return grafico();
+        }
+        if (data.chain.evolves_to.evolves_to.length > 0) {
+            var thirdEvo = data.chain.evolves_to[0].evolves_to[0].species.name;
+            console.log(thirdEvo);
+        } else {
+            return grafico();
+        }
+    // Linha evolutiva
+
+    // grafico();
+
 }
 
 function grafico() {                // *Tentar exibir a speed na parte de baixo* //
@@ -122,9 +152,3 @@ function grafico() {                // *Tentar exibir a speed na parte de baixo*
     });
 }
 
-// async function fetchEvoLine(id) {
-//     var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-//     var data = await response.json();
-//     console.log(data);
-    
-// }
