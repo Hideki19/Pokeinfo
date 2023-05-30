@@ -75,31 +75,95 @@ async function fetchPokemon(id) {
         var data = await response.json();
         console.log(response.url);
 
-        if (data.chain.evolves_to.length == 0) {
+
+        // if (data.chain.evolves_to[0].evolves_to == undefined) {
+        //     if (data.chain.evolves_to.length == 0) {
+        //         var firstEvo = data.chain.species.name;
+        //         console.log(firstEvo);
+        //         console.log("Este pokemon tem uma evoluçao");
+        //     } else if (data.chain.evolves_to.length > 0) {
+        //         var firstEvo = data.chain.species.name;
+        //         var secondEvo = data.chain.evolves_to[0].species.name; 
+        //         console.log(firstEvo);
+        //         console.log(secondEvo);
+        //         console.log("Este pokemon tem duas evoluçoes");
+        //     } 
+        // } else {
+        //     var firstEvo = data.chain.species.name;
+        //     var secondEvo = data.chain.evolves_to[0].species.name; 
+        //     var thirdEvo = data.chain.evolves_to[0].evolves_to[0].species.name;
+        //     console.log(firstEvo);
+        //     console.log(secondEvo);
+        //     console.log(thirdEvo);
+        //     console.log("Este pokemon tem tres evoluçoes");
+        // }
+
+        // Zero evo
+        if (data.chain.evolves_to.length == 0) { //No evolution
             var firstEvo = data.chain.species.name;
             console.log(firstEvo);
-        } else {
-            return grafico();
+        } else if (data.chain.evolves_to[0].evolves_to.length == 0) { // One evolution
+            if (data.chain.evolves_to.length == 2) { // One evolution two options
+                var firstEvo = data.chain.species.name;
+                var secondEvo1 = data.chain.evolves_to[0].species.name; 
+                var secondEvo2 = data.chain.evolves_to[1].species.name; 
+                console.log(firstEvo);
+                console.log(secondEvo1);
+                console.log(secondEvo2);
+            } else if (data.chain.evolves_to[0].evolution_details.length == 3) { // One evolution three options (rockruff)
+                var firstEvo = data.chain.species.name;
+                var secondEvo1 = data.chain.evolves_to[0].species.name + "-midday"; 
+                var secondEvo2 = data.chain.evolves_to[0].species.name + "-midnight"; 
+                var secondEvo3 = data.chain.evolves_to[0].species.name + "-dusk"; 
+                console.log(firstEvo);
+                console.log(secondEvo1);
+                console.log(secondEvo2);
+                console.log(secondEvo3);
+            } else if (data.chain.evolves_to.length == 3) { // One evolution three options (tyrogue)
+                var firstEvo = data.chain.species.name;
+                var secondEvo = [];
+                for (i = 0; i < data.chain.evolves_to.length; i++) {
+                    secondEvo.push(data.chain.evolves_to[i].species.name)
+                }
+                console.log(firstEvo);
+                console.log(secondEvo[0]);
+                console.log(secondEvo[1]);
+                console.log(secondEvo[2]);
+            } else {
+                var firstEvo = data.chain.species.name;
+                var secondEvo = data.chain.evolves_to[0].species.name; 
+                console.log(firstEvo);
+                console.log(secondEvo); 
+            }    
+        } else if (data.chain.evolves_to[0].evolves_to[0].evolves_to.length == 0) { //Two evolutions
+            if (data.chain.evolves_to[0].evolves_to.length == 2) {
+                var firstEvo = data.chain.species.name;
+                var secondEvo = data.chain.evolves_to[0].species.name;
+                var thirdEvo = [];
+                for (i = 0; i < data.chain.evolves_to[0].evolves_to.length; i++) {
+                    thirdEvo.push(data.chain.evolves_to[0].evolves_to[i].species.name);
+                }
+                console.log(firstEvo);
+                console.log(secondEvo);
+                console.log(thirdEvo[0]);
+                console.log(thirdEvo[1]);
+            } else {
+                var firstEvo = data.chain.species.name;
+                var secondEvo = data.chain.evolves_to[0].species.name; 
+                var thirdEvo = data.chain.evolves_to[0].evolves_to[0].species.name;
+                console.log(firstEvo);
+                console.log(secondEvo);
+                console.log(thirdEvo);
+            }
         }
-        if (data.chain.evolves_to.length > 0) {
-            var secondEvo = data.chain.evolves_to[0].species.name; 
-            console.log(secondEvo);
-        } else {
-            return grafico();
-        }
-        if (data.chain.evolves_to.evolves_to.length > 0) {
-            var thirdEvo = data.chain.evolves_to[0].evolves_to[0].species.name;
-            console.log(thirdEvo);
-        } else {
-            return grafico();
-        }
+        
     // Linha evolutiva
 
-    // grafico();
+    grafico();
 
 }
 
-function grafico() {                // *Tentar exibir a speed na parte de baixo* //
+function grafico() {
     pokemonStats.innerHTML = ''
     pokemonStats.innerHTML = '<canvas id="pokemonStatsGraph" width=500px></canvas>' 
     
@@ -145,7 +209,8 @@ function grafico() {                // *Tentar exibir a speed na parte de baixo*
         options: {
             scales: {
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    recomendedMax: 100 // ----------------------------------------------------------------------------------
                 }
             }
         }

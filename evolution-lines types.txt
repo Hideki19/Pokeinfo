@@ -1,0 +1,16 @@
+Tipos de linhas evolutivas:
+
+1. base (kangaskhan) ok
+
+2. base => final (rattata) ok
+
+3. base => meio => final (gengar) ok
+
+4. base => final_1 ou final_2 (clampearl) (burmy) ok
+
+5. base => meio => final_1 ou final_2 (oddish)
+
+6. base => final_1 ou final_2 ou final_3 (rockruff) ok
+
+7. Rotom***
+
