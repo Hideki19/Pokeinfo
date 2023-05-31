@@ -8,9 +8,13 @@ Tipos de linhas evolutivas:
 
 4. base => final_1 ou final_2 (clampearl) (burmy) ok
 
-5. base => meio => final_1 ou final_2 (oddish)
+5. base => meio => final_1 ou final_2 (oddish) ok
 
 6. base => final_1 ou final_2 ou final_3 (rockruff) ok
 
-7. Rotom***
+7. Eevee*************** ok
+
+8. Rotom***
+
+
 

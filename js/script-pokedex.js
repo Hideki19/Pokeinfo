@@ -129,6 +129,14 @@ async function fetchPokemon(id) {
                 console.log(secondEvo[0]);
                 console.log(secondEvo[1]);
                 console.log(secondEvo[2]);
+            } else if (data.chain.evolves_to.length > 3) { // Eevee 
+                var firstEvo = data.chain.species.name;
+                var secondEvo = [];
+                console.log(firstEvo);
+                for (i = 0; i < data.chain.evolves_to.length; i++) {
+                    secondEvo.push(data.chain.evolves_to[i].species.name);
+                    console.log(secondEvo[i]);
+                }
             } else {
                 var firstEvo = data.chain.species.name;
                 var secondEvo = data.chain.evolves_to[0].species.name; 
