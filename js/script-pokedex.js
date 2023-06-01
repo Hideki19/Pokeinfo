@@ -216,11 +216,20 @@ async function fetchPokemon(id) {
 
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${firstEvo}`);
             var data = await response.json();
-            pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
-
+            pokemonEvolutionLine.innerHTML += `<div class="evoLinePokemon">
+                                                    <span>base form</span>
+                                                    <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                    <span>${firstEvo}</span>
+                                                    <span>#${data.id}</span>
+                                                </div>`;
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${secondEvo}`);
             var data = await response.json();
-            pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
+            pokemonEvolutionLine.innerHTML += `<div class="evoLinePokemon">
+                                                    <span>middle form</span>
+                                                    <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                    <span>${secondEvo}</span>
+                                                    <span>#${data.id}</span>
+                                                </div>`;            
         }
     } else if (data.chain.evolves_to[0].evolves_to[0].evolves_to.length == 0) { //Two evolutions
         if (data.chain.evolves_to[0].evolves_to.length == 2) { // Two evolutions two forms

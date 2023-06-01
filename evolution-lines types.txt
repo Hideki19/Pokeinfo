@@ -2,9 +2,9 @@ Tipos de linhas evolutivas:
 
 1. base (kangaskhan) ok
 
-2. base => final (rattata) ok
+2. base => final (rattata) ok ok
 
-3. base => meio => final (gengar) ok
+3. base => meio => final (gengar) ok ok
 
 4. base => final_1 ou final_2 (clampearl) (burmy) ok
 
