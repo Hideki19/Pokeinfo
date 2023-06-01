@@ -30,11 +30,52 @@ async function fetchPokemon(id) {
     // Colocar o id
 
     // Colocar os tipos (*Tentar colocar cores nos tipos*)
-    if (data.types.length == 1) { // Se o pokemon tiver apenas 1 tipo
-        pokemonInfo.innerHTML += `<div class="divPokemonInfo"><span>Tipo</span><span>${(data['types']['0']['type']['name']).toUpperCase()}</span></div>`;
-    } else { // Se ele tiver 2 tipos
-        pokemonInfo.innerHTML += `<div class="divPokemonInfo"><span>Tipo</span><span>${(data['types']['0']['type']['name']).toUpperCase()} ${(data['types']['1']['type']['name']).toUpperCase()}</span></div>`;
+    // if (data.types.length == 1) { // Se o pokemon tiver apenas 1 tipo
+    //     pokemonInfo.innerHTML += `<div class="divPokemonInfo"><span>Tipo</span><span>${(data['types']['0']['type']['name']).toUpperCase()}</span></div>`;
+    // } else { // Se ele tiver 2 tipos
+    //     pokemonInfo.innerHTML += `<div class="divPokemonInfo"><span>Tipo</span><span>${(data['types']['0']['type']['name']).toUpperCase()} ${(data['types']['1']['type']['name']).toUpperCase()}</span></div>`;
+    // }
+    for (i = 0; i < data.types.length; i++) {  
+        pokemonInfo.innerHTML += `<div class="divPokemonInfo"><span>Tipo ${i+1}</span><span id="pokemonType">${(data['types'][i]['type']['name']).toUpperCase()} </span></div>`;
+    if (data.types[i].type.name == 'normal') {
+        pokemonType.classList.add("normal");
+    } else if (data.types[i].type.name == 'fire') {
+        pokemonType.classList.add("fire");
+    } else if (data.types[i].type.name == 'water') {
+        pokemonType.classList.add("water");
+    } else if (data.types[i].type.name == 'electric') {
+        pokemonType.classList.add("electric");
+    } else if (data.types[i].type.name == 'grass') {
+        pokemonType.classList.add("grass");
+    } else if (data.types[i].type.name == 'ice') {
+        pokemonType.classList.add("ice");
+    } else if (data.types[i].type.name == 'fighting') {
+        pokemonType.classList.add("fighting");
+    } else if (data.types[i].type.name == 'poison') {
+        pokemonType.classList.add("poison");
+    } else if (data.types[i].type.name == 'ground') {
+        pokemonType.classList.add("ground");
+    } else if (data.types[i].type.name == 'flying') {
+        pokemonType.classList.add("flying");
+    } else if (data.types[i].type.name == 'psychic') {
+        pokemonType.classList.add("psychic");
+    } else if (data.types[i].type.name == 'bug') {
+        pokemonType.classList.add("bug");
+    } else if (data.types[i].type.name == 'rock') {
+        pokemonType.classList.add("rock");
+    } else if (data.types[i].type.name == 'ghost') {
+        pokemonType.classList.add("ghost");
+    } else if (data.types[i].type.name == 'dragon') {
+        pokemonType.classList.add("dragon");
+    } else if (data.types[i].type.name == 'dark') {
+        pokemonType.classList.add("dark");
+    } else if (data.types[i].type.name == 'steel') {
+        pokemonType.classList.add("steel");
+    } else if (data.types[i].type.name == 'fairy') {
+        pokemonType.classList.add("fairy");
     }
+    }
+
     // Colocar os tipos
 
     // Colocar a altura e o peso

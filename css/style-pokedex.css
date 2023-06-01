@@ -122,6 +122,26 @@ button {
     width: 100%;
 }
 
+#pokemonType {
+    width: 100px;
+    text-align: center;
+    color: #EDF2F4;
+    border: solid 1px black;
+    border-radius: 2%;
+}
+
+.normal {
+    background-color: gray;
+}
+
+.fire {
+    background-color: #FF9900;
+}
+
+.water {
+    background-color: #00B1E0;
+}
+
 #pokemonTypeChart {
     width: 30%;
     height: 300px;
