@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/script-pokedex.js"></script>
+    <title>Pokeinfo | Pokedex</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- <link rel="stylesheet" href="../css/style-pokedex.css"> -->
+    <link rel="stylesheet" href="../css/style-type-chart.css">
+    <script src="../js/script-type-chart.js"></script>
+</head>
+<header>
+    <div class="container">
+        <div id="logo">
+            <a href="../index.html">
+                <img src="../assets/logo.png" alt="Logo" style="height: 100%;">
+            </a>
+        </div>
+        <ul id="ul_header">
+            <a href="/html/pokedex.html">
+                <li>Pokédex</li>
+            </a>
+            <a href="google.com">
+                <li>Gerações</li>
+            </a>
+            <a href="/html/type-chart.html">
+                <li style="color: #D90429; font-weight: 600;">Type Chart</li>
+            </a>
+            <div id="header_buttons">
+                <a href="login.html">
+                    <li class="li_button" id="btn_login">Login</li>
+                </a>
+                <a href="cadastro.html">
+                    <li class="li_button" id="btn_cadastrar">Cadastrar</li>
+                </a>
+            </div>
+        </ul>
+    </div>
+</header>
+<body>
+    <div class="main">
+        <span class="titulo"><span class="red_text">Type</span> Chart</span>
+        <div class="box">
+            <span>Existem 18 tipos Pokémon, que interagem entre si de diferentes maneiras ofensivamente e defensivamente</span>
+            <span>Tabela Geral</span>
+            <table id="myTable">
+                <tr>
+                    <th></th>
+                    <th>NOR</th>
+                    <th>FIR</th>
+                    <th>WAT</th>
+                    <th>ELE</th>
+                    <th>GRA</th>
+                    <th>ICE</th>
+                    <th>FIG</th>
+                    <th>POI</th>
+                    <th>GRO</th>
+                    <th>FLY</th>
+                    <th>PSY</th>
+                    <th>BUG</th>
+                    <th>ROC</th>
+                    <th>GHO</th>
+                    <th>DRA</th>
+                    <th>DAR</th>
+                    <th>STE</th>
+                    <th>FAI</th>
+                  </tr>
+                <tr id="tr_normal">
+                    <td>NORMAL</td>
+                </tr>
+                <tr id="tr_fire">
+                    <td>FIRE</td>
+                </tr>
+                <tr id="tr_water">
+                    <td>WATER</td>   
+                </tr>
+                <tr id="tr_electric">
+                    <td>ELECTRIC</td>
+                </tr>
+                <tr id="tr_grass">
+                    <td>GRASS</td>
+                </tr>
+                <tr id="tr_ice">
+                    <td>ICE</td>
+                </tr>
+                <tr id="tr_fighting">
+                    <td>FIGHTING</td>
+                    
+                </tr>
+                <tr id="tr_poison">
+                    <td>POISON</td>
+                </tr>
+                <tr id="tr_ground">
+                    <td>GROUND</td>
+                </tr>
+                <tr id="tr_flying">
+                    <td>FLYING</td>
+                </tr>
+                <tr id="tr_psychic">
+                    <td>PSYCHIC</td>   
+                </tr>
+                <tr id="tr_bug">
+                    <td>BUG</td>
+                </tr>
+                <tr id="tr_rock">
+                    <td>ROCK</td>
+                </tr>
+                <tr id="tr_ghost">
+                    <td>GHOST</td>
+                </tr>
+                <tr id="tr_dragon">
+                    <td>DRAGON</td>
+                </tr>
+                <tr id="tr_dark">
+                    <td>DARK</td>
+                </tr>
+                <tr id="tr_steel">
+                    <td>STEEL</td>
+                </tr>
+                <tr id="tr_fairy">
+                    <td>FAIRY</td>
+                </tr>
+              </table>
+              <br> 
+              
+              <button onclick="myFunction()">Try it</button>
+              
+              <p id="demo"></p>
+        </div>
+    </div>
+    
+</body>
+</html>
+<script>
+    var types = ['normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'];
+
+    var typeChartOffensive = {
+    normal: [
+        {normal: 1}, 
+        {fire: 1}, 
+        {water: 1}, 
+        {electric: 1}, 
+        {grass: 1}, 
+        {ice: 1}, 
+        {fighting: 1}, 
+        {poison: 1}, 
+        {ground: 1}, 
+        {flying: 1}, 
+        {psychic: 1}, 
+        {bug: 1}, 
+        {rock: 1/2}, 
+        {ghost: 0}, 
+        {dragon: 1}, 
+        {dark: 1}, 
+        {steel: 1}, 
+        {fairy: 1}
+    ],
+    fire: [
+        {normal: 1}, 
+        {fire: 1/2}, 
+        {water: 1/2}, 
+        {electric: 1}, 
+        {grass: 2}, 
+        {ice: 2}, 
+        {fighting: 1}, 
+        {poison: 1}, 
+        {ground: 1}, 
+        {flying: 1}, 
+        {psychic: 1}, 
+        {bug: 2}, 
+        {rock: 1/2}, 
+        {ghost: 1}, 
+        {dragon: 1/2}, 
+        {dark: 1}, 
+        {steel: 2}, 
+        {fairy: 1}
+    ],
+    water: [
+        {normal: 1}, 
+        {fire: 2}, 
+        {water: 1/2}, 
+        {electric: 1}, 
+        {grass: 1/2}, 
+        {ice: 1}, 
+        {fighting: 1}, 
+        {poison: 1}, 
+        {ground: 2}, 
+        {flying: 1}, 
+        {psychic: 1}, 
+        {bug: 1}, 
+        {rock: 2}, 
+        {ghost: 1}, 
+        {dragon: 1/2}, 
+        {dark: 1}, 
+        {steel: 1}, 
+        {fairy: 1}
+    ],
+    electric: [
+        {normal: 1}, 
+        {fire: 1}, 
+        {water: 2}, 
+        {electric: 1/2}, 
+        {grass: 1/2}, 
+        {ice: 1}, 
+        {fighting: 1}, 
+        {poison: 1}, 
+        {ground: 0}, 
+        {flying: 2}, 
+        {psychic: 1}, 
+        {bug: 1}, 
+        {rock: 1}, 
+        {ghost: 1}, 
+        {dragon: 1/2}, 
+        {dark: 1}, 
+        {steel: 1}, 
+        {fairy: 1}
+    ],
+    grass: [
+        {normal: 1}, 
+        {fire: 1/2}, 
+        {water: 2}, 
+        {electric: 1}, 
+        {grass: 1/2}, 
+        {ice: 1}, 
+        {fighting: 1}, 
+        {poison: 1/2}, 
+        {ground: 2}, 
+        {flying: 1/2}, 
+        {psychic: 1}, 
+        {bug: 1/2}, 
+        {rock: 2}, 
+        {ghost: 1}, 
+        {dragon: 1/2}, 
+        {dark: 1}, 
+        {steel: 1/2}, 
+        {fairy: 1}
+    ],
+    ice: [
+        {normal: 1}, 
+        {fire: 1/2}, 
+        {water: 1/2}, 
+        {electric: 1}, 
+        {grass: 2}, 
+        {ice: 1/2}, 
+        {fighting: 1}, 
+        {poison: 1}, 
+        {ground: 2}, 
+        {flying: 2}, 
+        {psychic: 1}, 
+        {bug: 1}, 
+        {rock: 1}, 
+        {ghost: 1}, 
+        {dragon: 2}, 
+        {dark: 1}, 
+        {steel: 1/2}, 
+        {fairy: 1}
+    ],
+    fighting: [
+        {normal: 2}, 
+        {fire: 1}, 
+        {water: 1}, 
+        {electric: 1}, 
+        {grass: 1}, 
+        {ice: 2}, 
+        {fighting: 1}, 
+        {poison: 1/2}, 
+        {ground: 1}, 
+        {flying: 1/2}, 
+        {psychic: 1/2}, 
+        {bug: 1/2}, 
+        {rock: 2}, 
+        {ghost: 0}, 
+        {dragon: 1}, 
+        {dark: 2}, 
+        {steel: 2}, 
+        {fairy: 1/2}
+    ],
+    poison: [
+        {normal: 1}, 
+        {fire: 1}, 
+        {water: 1}, 
+        {electric: 1}, 
+        {grass: 2}, 
+        {ice: 1}, 
+        {fighting: 1}, 
+        {poison: 1/2}, 
+        {ground: 1/2}, 
+        {flying: 1}, 
+        {psychic: 1}, 
+        {bug: 1}, 
+        {rock: 1/2}, 
+        {ghost: 1/2}, 
+        {dragon: 1}, 
+        {dark: 1}, 
+        {steel: 0}, 
+        {fairy: 2}
+    ],
+    ground: [
+        {normal: 1}, 
+        {fire: 2}, 
+        {water: 1}, 
+        {electric: 2}, 
+        {grass: 1/2}, 
+        {ice: 1}, 
+        {fighting: 1}, 
+        {poison: 2}, 
+        {ground: 1}, 
+        {flying: 0}, 
+        {psychic: 1}, 
+        {bug: 1/2}, 
+        {rock: 2}, 
+        {ghost: 1}, 
+        {dragon: 1}, 
+        {dark: 1}, 
+        {steel: 2}, 
+        {fairy: 1}
+    ],
+    flying: [
+        {normal: 1}, 
+        {fire: 1}, 
+        {water: 1}, 
+        {electric: 1/2}, 
+        {grass: 2}, 
+        {ice: 1}, 
+        {fighting: 2}, 
+        {poison: 1}, 
+        {ground: 1}, 
+        {flying: 1}, 
+        {psychic: 1}, 
+        {bug: 2}, 
+        {rock: 1/2}, 
+        {ghost: 1}, 
+        {dragon: 1}, 
+        {dark: 1}, 
+        {steel: 1/2}, 
+        {fairy: 1}
+    ],
+    psychic: [
+        {normal: 1}, 
+        {fire: 1}, 
+        {water: 1}, 
+        {electric: 1}, 
+        {grass: 1}, 
+        {ice: 1}, 
+        {fighting: 2}, 
+        {poison: 2}, 
+        {ground: 1}, 
+        {flying: 1}, 
+        {psychic: 1/2}, 
+        {bug: 1}, 
+        {rock: 1}, 
+        {ghost: 1}, 
+        {dragon: 1}, 
+        {dark: 0}, 
+        {steel: 1/2}, 
+        {fairy: 1/2}
+    ],
+    bug: [
+        {normal: 1}, 
+        {fire: 1/2}, 
+        {water: 1}, 
+        {electric: 1}, 
+        {grass: 2}, 
+        {ice: 1}, 
+        {fighting: 1/2}, 
+        {poison: 1/2}, 
+        {ground: 1}, 
+        {flying: 1/2}, 
+        {psychic: 2}, 
+        {bug: 1}, 
+        {rock: 1}, 
+        {ghost: 1/2}, 
+        {dragon: 1}, 
+        {dark: 2}, 
+        {steel: 1/2}, 
+        {fairy: 1/2}
+    ],
+    rock: [
+        {normal: 1}, 
+        {fire: 2}, 
+        {water: 1}, 
+        {electric: 1}, 
+        {grass: 1}, 
+        {ice: 2}, 
+        {fighting: 1/2}, 
+        {poison: 1}, 
+        {ground: 1/2}, 
+        {flying: 2}, 
+        {psychic: 1}, 
+        {bug: 2}, 
+        {rock: 1}, 
+        {ghost: 1}, 
+        {dragon: 1}, 
+        {dark: 1}, 
+        {steel: 1/2}, 
+        {fairy: 1}
+    ],
+    ghost: [
+        {normal: 0}, 
+        {fire: 1}, 
+        {water: 1}, 
+        {electric: 1}, 
+        {grass: 1}, 
+        {ice: 1}, 
+        {fighting: 1}, 
+        {poison: 1}, 
+        {ground: 1}, 
+        {flying: 1}, 
+        {psychic: 2}, 
+        {bug: 1}, 
+        {rock: 1}, 
+        {ghost: 2}, 
+        {dragon: 1}, 
+        {dark: 1/2}, 
+        {steel: 1}, 
+        {fairy: 1}
+    ],
+    dragon: [
+        {normal: 1}, 
+        {fire: 1}, 
+        {water: 1}, 
+        {electric: 1}, 
+        {grass: 1}, 
+        {ice: 1}, 
+        {fighting: 1}, 
+        {poison: 1}, 
+        {ground: 1}, 
+        {flying: 1}, 
+        {psychic: 1}, 
+        {bug: 1}, 
+        {rock: 1}, 
+        {ghost: 1}, 
+        {dragon: 2}, 
+        {dark: 1}, 
+        {steel: 1/2}, 
+        {fairy: 0}
+    ],
+    dark: [
+        {normal: 1}, 
+        {fire: 1}, 
+        {water: 1}, 
+        {electric: 1}, 
+        {grass: 1}, 
+        {ice: 1}, 
+        {fighting: 1/2}, 
+        {poison: 1}, 
+        {ground: 1}, 
+        {flying: 1}, 
+        {psychic: 2}, 
+        {bug: 1}, 
+        {rock: 1}, 
+        {ghost: 2}, 
+        {dragon: 1}, 
+        {dark: 1/2}, 
+        {steel: 1}, 
+        {fairy: 1/2}
+    ],
+    steel: [
+        {normal: 1}, 
+        {fire: 1/2}, 
+        {water: 1/2}, 
+        {electric: 1/2}, 
+        {grass: 1}, 
+        {ice: 2}, 
+        {fighting: 1}, 
+        {poison: 1}, 
+        {ground: 1}, 
+        {flying: 1}, 
+        {psychic: 1}, 
+        {bug: 1}, 
+        {rock: 2}, 
+        {ghost: 1}, 
+        {dragon: 1/2}, 
+        {dark: 1}, 
+        {steel: 1/2}, 
+        {fairy: 2}
+    ],
+    fairy: [
+        {normal: 1}, 
+        {fire: 1/2}, 
+        {water: 1}, 
+        {electric: 1}, 
+        {grass: 1}, 
+        {ice: 1}, 
+        {fighting: 2}, 
+        {poison: 1/2}, 
+        {ground: 1}, 
+        {flying: 1}, 
+        {psychic: 1}, 
+        {bug: 1}, 
+        {rock: 1}, 
+        {ghost: 1}, 
+        {dragon: 2}, 
+        {dark: 2}, 
+        {steel: 1/2}, 
+        {fairy: 1}
+    ],
+
+} 
+    for (var i = 0; i < typeChartOffensive.normal.length; i++) { // FIRE
+        var row = document.getElementById("tr_normal");
+        var x = row.insertCell(i+1);
+        if (i == 0) {
+            var mult = typeChartOffensive.normal[i].normal;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 1) {
+            var mult = typeChartOffensive.normal[i].fire;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 2) {
+            var mult = typeChartOffensive.normal[i].water;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 3) {
+            var mult = typeChartOffensive.normal[i].electric;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 4) {
+            var mult = typeChartOffensive.normal[i].grass;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 5) {
+            var mult = typeChartOffensive.normal[i].ice;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 6) {
+            var mult = typeChartOffensive.normal[i].fighting;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 7) {
+            var mult = typeChartOffensive.normal[i].poison;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 8) {
+            var mult = typeChartOffensive.normal[i].ground;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 9) {
+            var mult = typeChartOffensive.normal[i].flying;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 10) {
+            var mult = typeChartOffensive.normal[i].psychic;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 11) {
+            var mult = typeChartOffensive.normal[i].bug;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 12) {
+            var mult = typeChartOffensive.normal[i].rock;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 13) {
+            var mult = typeChartOffensive.normal[i].ghost;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 14) {
+            var mult = typeChartOffensive.normal[i].dragon;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 15) {
+            var mult = typeChartOffensive.normal[i].dark;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 16) {
+            var mult = typeChartOffensive.normal[i].steel;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 17) {
+            var mult = typeChartOffensive.normal[i].fairy;
+            console.log(mult);
+            x.innerHTML = mult;
+        }
+    }
+
+    for (var i = 0; i < typeChartOffensive.fire.length; i++) {
+        var row = document.getElementById("tr_fire");
+        var x = row.insertCell(i+1);
+        if (i == 0) {
+            var mult = typeChartOffensive.fire[i].normal;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 1) {
+            var mult = typeChartOffensive.fire[i].fire;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 2) {
+            var mult = typeChartOffensive.fire[i].water;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 3) {
+            var mult = typeChartOffensive.fire[i].electric;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 4) {
+            var mult = typeChartOffensive.fire[i].grass;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 5) {
+            var mult = typeChartOffensive.fire[i].ice;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 6) {
+            var mult = typeChartOffensive.fire[i].fighting;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 7) {
+            var mult = typeChartOffensive.fire[i].poison;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 8) {
+            var mult = typeChartOffensive.fire[i].ground;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 9) {
+            var mult = typeChartOffensive.fire[i].flying;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 10) {
+            var mult = typeChartOffensive.fire[i].psychic;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 11) {
+            var mult = typeChartOffensive.fire[i].bug;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 12) {
+            var mult = typeChartOffensive.fire[i].rock;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 13) {
+            var mult = typeChartOffensive.fire[i].ghost;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 14) {
+            var mult = typeChartOffensive.fire[i].dragon;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 15) {
+            var mult = typeChartOffensive.fire[i].dark;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 16) {
+            var mult = typeChartOffensive.fire[i].steel;
+            console.log(mult);
+            x.innerHTML = mult;
+        } else if (i == 17) {
+            var mult = typeChartOffensive.fire[i].fairy;
+            console.log(mult);
+            x.innerHTML = mult;
+        }
+    }
+    function myFunction() {
+      var x = document.getElementById("myTable").rows.length;
+      document.getElementById("demo").innerHTML = "Found " + x + " tr elements in the table.";
+    }
+
+</script>
+

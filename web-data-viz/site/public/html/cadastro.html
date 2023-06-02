@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style-form.css">
+    <title>Document</title>
+</head>
+<header>
+    <div class="container">
+        <div id="logo">
+            <a href="../index.html">
+                <img src="../assets/logo.png" alt="Logo" style="height: 100%;">
+            </a>
+        </div>
+        <ul id="ul_header">
+            <a href="/html/pokedex.html">
+                <li>Pokédex</li>
+            </a>
+            <a href="google.com">
+                <li>Gerações</li>
+            </a>
+            <a href="google.com">
+                <li>Type Chart</li>
+            </a>
+            <div id="header_buttons">
+                <a href="login.html">
+                    <li class="li_button" id="btn_login">Login</li>
+                </a>
+                <a href="cadastro.html">
+                    <li class="li_button" id="btn_cadastrar">Cadastrar</li>
+                </a>
+            </div>
+        </ul>
+    </div>
+</header>
+<body>
+    
+    <div class="box">
+        <div class="form">
+            <div class="container">
+                <label for="ipt_nome">Nome</label>
+                <input id="ipt_nome" class="form_input" type="text">
+                <label for="ipt_email">Email</label>
+                <input id="ipt_email" class="form_input" type="text">
+                <label for="ipt_senha">Senha</label>
+                <input id="ipt_senha" class="form_input" type="text">
+                <label for="ipt_confSenha">Confirmar Senha</label>
+                <input id="ipt_confSenha" class="form_input" type="text">
+                <button class="form_button" onclick="cadastrar()">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function cadastrar() {
+        
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = ipt_nome.value;
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
+        var confirmacaoSenhaVar = ipt_confSenha.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            // cardErro.style.display = "block"
+            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+            
+            return false;
+        }
+        else {
+            // setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                // cardErro.style.display = "block";
+
+                console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
+
+                setTimeout(() => {
+                    window.location = "../html/login.html";
+                }, "2000")
+
+                
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            
+        });
+
+        return false;
+    }
+
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
+
+</script>

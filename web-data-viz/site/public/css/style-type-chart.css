@@ -1,0 +1,41 @@
+.main {
+    height: 300vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(180deg, #354C73 0%, #8D99AE 53.12%, #354C73 100%); 
+}
+
+.titulo {
+    position: static;
+    margin-top: 5%;
+}
+
+.box {
+    width: 80vw;
+    height: 250vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+    background-color: #EDF2F4;
+    border-radius: 20px;
+}
+
+tr {
+    height: 40px;
+    padding: 0;
+}
+
+th {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+}
+
+td {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    text-align: center;
+}
