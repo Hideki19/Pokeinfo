@@ -1,6 +1,27 @@
 var fetchPokemonStats = [];
 
+async function datalistPokemon() { // Tentar colocar um card de aviso de como procurar alolan, galarian, hisuian forms
+    for (i = 0; i < 1010; i++) {
+        var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i+1}`);
+        var data =  await response.json();
+        listPokemon.innerHTML += `<option>${data.name}</option>`; 
+        if (i%100 == 0) {
+            console.log("Estou em " + i);
+        }
+    }
+    console.log("Acabou");
+    loading.style.display = 'none'
+    iptPokemon.focus();
+    fetchPokemon(1);
+}
+
+function randomPokemon() {
+    var rndPokemon = Math.floor(Math.random() * 1009 + 1);
+    fetchPokemon(rndPokemon);
+}
+
 async function fetchPokemon(id) {
+    conteudo.style.display = 'flex'
 
     // Apagar o conteúdo das divs
     pokemonName.innerHTML = '';
@@ -169,32 +190,8 @@ async function fetchPokemon(id) {
     var data = await response.json();
     console.log(response.url);
 
-
-    // if (data.chain.evolves_to[0].evolves_to == undefined) {
-    //     if (data.chain.evolves_to.length == 0) {
-    //         var firstEvo = data.chain.species.name;
-    //         console.log(firstEvo);
-    //         console.log("Este pokemon tem uma evoluçao");
-    //     } else if (data.chain.evolves_to.length > 0) {
-    //         var firstEvo = data.chain.species.name;
-    //         var secondEvo = data.chain.evolves_to[0].species.name; 
-    //         console.log(firstEvo);
-    //         console.log(secondEvo);
-    //         console.log("Este pokemon tem duas evoluçoes");
-    //     } 
-    // } else {
-    //     var firstEvo = data.chain.species.name;
-    //     var secondEvo = data.chain.evolves_to[0].species.name; 
-    //     var thirdEvo = data.chain.evolves_to[0].evolves_to[0].species.name;
-    //     console.log(firstEvo);
-    //     console.log(secondEvo);
-    //     console.log(thirdEvo);
-    //     console.log("Este pokemon tem tres evoluçoes");
-    // }
-
     pokemonEvolutionLine.innerHTML += `<div id="evoLineTitulo"><span class="subtitulo">Linha evolutiva</span></div>`
 
-    // Zero evo
     if (data.chain.evolves_to.length == 0) { //No evolution
         var firstEvo = data.chain.species.name;
         pokemonEvolutionLine.innerHTML += `<span class="subtitulo2">Esse pokemon não evolui</span>`
@@ -220,22 +217,39 @@ async function fetchPokemon(id) {
                 var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${secondEvo1}-plant`);
                 var data = await response.json();
                 pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
-                                                        <span>Forma Básica</span>
+                                                        <span>Estágio 1</span>
                                                         <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
-                                                        <span>${firstEvo}</span>
+                                                        <span>${secondEvo1}</span>
                                                         <span>#${data.id}</span>
                                                     </div>`;
                 var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${secondEvo2}`);
                 var data = await response.json();
-                pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
+                pokemonEvolutionLine.innerHTML += ` <span style="color: #2B2D42;font-size: 16px;">OU</span>
+                                                    <div class="evoLinePokemon">
+                                                        <span>Estágio 1</span>
+                                                        <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                        <span>${secondEvo2}</span>
+                                                        <span>#${data.id}</span>
+                                                    </div>`;
             } else {
                 var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${secondEvo1}`);
                 var data = await response.json();
-                pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
+                pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
+                                                        <span>Estágio 1</span>
+                                                        <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                        <span>${secondEvo1}</span>
+                                                        <span>#${data.id}</span>
+                                                    </div>`;
 
                 var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${secondEvo2}`);
                 var data = await response.json();
-                pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
+                pokemonEvolutionLine.innerHTML += ` <span style="color: #2B2D42;font-size: 16px;">OU</span>
+                                                    <div class="evoLinePokemon">
+                                                        <span>Estágio 1</span>
+                                                        <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                        <span>${secondEvo2}</span>
+                                                        <span>#${data.id}</span>
+                                                    </div>`;
             }
         } else if (data.chain.evolves_to[0].evolution_details.length == 3) { // One evolution three options (rockruff)
             var firstEvo = data.chain.species.name;
@@ -249,19 +263,38 @@ async function fetchPokemon(id) {
 
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${firstEvo}`);
             var data = await response.json();
-            pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
-
+            pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
+                                                    <span>Forma Básica</span>
+                                                    <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                    <span>${firstEvo}</span>
+                                                    <span>#${data.id}</span>
+                                                </div>`;
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${secondEvo1}`);
             var data = await response.json();
-            pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
-
+            pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
+                                                    <span>Estágio 1</span>
+                                                    <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                    <span>${secondEvo1}</span>
+                                                    <span>#${data.id}</span>
+                                                </div>`;
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${secondEvo2}`);
             var data = await response.json();
-            pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
-
+            pokemonEvolutionLine.innerHTML += ` <span style="color: #2B2D42;font-size: 16px;">OU</span>
+                                                <div class="evoLinePokemon">
+                                                    <span>Estágio 1</span>
+                                                    <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                    <span>${secondEvo2}</span>
+                                                    <span>#${data.id}</span>
+                                                </div>`;
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${secondEvo3}`);
             var data = await response.json();
-            pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
+            pokemonEvolutionLine.innerHTML += ` <span style="color: #2B2D42;font-size: 16px;">OU</span>
+                                                <div class="evoLinePokemon">
+                                                    <span>Estágio 1</span>
+                                                    <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                    <span>${secondEvo3}</span>
+                                                    <span>#${data.id}</span>
+                                                </div>`;
 
         } else if (data.chain.evolves_to.length == 3) { // One evolution three options (tyrogue)
             var firstEvo = data.chain.species.name;
@@ -276,30 +309,70 @@ async function fetchPokemon(id) {
 
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${firstEvo}`);
             var data = await response.json();
-            pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
-
+            pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
+                                                    <span>Forma Básica</span>
+                                                    <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                    <span>${firstEvo}</span>
+                                                    <span>#${data.id}</span>
+                                                </div>`;
             for (i = 0; i < secondEvo.length; i++) {
                 var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${secondEvo[i]}`);
                 var data = await response.json();
-                pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
+                if (i == 0) {
+                    pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
+                                                            <span>Estágio 1</span>
+                                                            <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                            <span>${secondEvo[i]}</span>
+                                                            <span>#${data.id}</span>
+                                                        </div>`;                                  
+                } else {
+                    pokemonEvolutionLine.innerHTML += ` <span style="color: #2B2D42;font-size: 16px;">OU</span>
+                                                        <div class="evoLinePokemon">
+                                                            <span>Estágio 1</span>
+                                                            <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                            <span>${secondEvo[i]}</span>
+                                                            <span>#${data.id}</span>
+                                                        </div>`;
+                }
             }
         } else if (data.chain.evolves_to.length > 3) { // Eevee 
             var firstEvo = data.chain.species.name;
             var secondEvo = [];
-            console.log(firstEvo);
             for (i = 0; i < data.chain.evolves_to.length; i++) {
-                secondEvo.push(data.chain.evolves_to[i].species.name);
-                console.log(secondEvo[i]);
+                secondEvo.push(data.chain.evolves_to[i].species.name)
             }
+            console.log(firstEvo);
+            console.log(secondEvo[0]);
+            console.log(secondEvo[1]);
+            console.log(secondEvo[2]);
 
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${firstEvo}`);
             var data = await response.json();
-            pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
-
+            pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
+                                                    <span>Forma Básica</span>
+                                                    <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                    <span>${firstEvo}</span>
+                                                    <span>#${data.id}</span>
+                                                </div>`;
             for (i = 0; i < secondEvo.length; i++) {
                 var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${secondEvo[i]}`);
                 var data = await response.json();
-                pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
+                if (i == 0) {
+                    pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
+                                                            <span>Estágio 1</span>
+                                                            <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                            <span>${secondEvo[i]}</span>
+                                                            <span>#${data.id}</span>
+                                                        </div>`;                                  
+                } else {
+                    pokemonEvolutionLine.innerHTML += ` <span style="color: #2B2D42;font-size: 16px;">OU</span>
+                                                        <div class="evoLinePokemon">
+                                                            <span>Estágio 1</span>
+                                                            <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                            <span>${secondEvo[i]}</span>
+                                                            <span>#${data.id}</span>
+                                                        </div>`;
+                }
             }
         } else {
             var firstEvo = data.chain.species.name;
@@ -339,16 +412,39 @@ async function fetchPokemon(id) {
 
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${firstEvo}`);
             var data = await response.json();
-            pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
-
+            pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
+                                                    <span>Forma Básica</span>
+                                                    <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                    <span>${firstEvo}</span>
+                                                    <span>#${data.id}</span>
+                                                </div>`;
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${secondEvo}`);
             var data = await response.json();
-            pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
-
+            pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
+                                                    <span>Estágio 1</span>
+                                                    <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                    <span>${secondEvo}</span>
+                                                    <span>#${data.id}</span>
+                                                </div>`;
             for (i = 0; i < thirdEvo.length; i++) {
                 var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${thirdEvo[i]}`);
                 var data = await response.json();
-                pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
+                if (i == 0) {
+                    pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
+                                                            <span>Estágio 2</span>
+                                                            <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                            <span>${thirdEvo[i]}</span>
+                                                            <span>#${data.id}</span>
+                                                        </div>`;
+                } else {
+                    pokemonEvolutionLine.innerHTML += ` <span style="color: #2B2D42;font-size: 16px;">OU</span>
+                                                        <div class="evoLinePokemon">
+                                                            <span>Estágio 2</span>
+                                                            <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                            <span>${thirdEvo[i]}</span>
+                                                            <span>#${data.id}</span>
+                                                        </div>`;
+                }
             }
 
 
@@ -370,18 +466,52 @@ async function fetchPokemon(id) {
 
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${firstEvo}`);
             var data = await response.json();
-            pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
-
+            pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
+                                                    <span>Forma Básica</span>
+                                                    <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                    <span>${firstEvo}</span>
+                                                    <span>#${data.id}</span>
+                                                </div>`;             
             for (i = 0; i < secondEvo.length; i++) {
                 var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${secondEvo[i]}`);
                 var data = await response.json();
-                pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
+                if (i == 0) {
+                    pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
+                                                            <span>Estágio 1</span>
+                                                            <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                            <span>${secondEvo[i]}</span>
+                                                            <span>#${data.id}</span>
+                                                        </div>`;
+                } else {
+                    pokemonEvolutionLine.innerHTML += ` <span style="color: #2B2D42;font-size: 16px;">OU</span>
+                                                        <div class="evoLinePokemon">
+                                                            <span>Estágio 1</span>
+                                                            <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                            <span>${secondEvo[i]}</span>
+                                                            <span>#${data.id}</span>
+                                                        </div>`;
+                }
             }
 
             for (i = 0; i < thirdEvo.length; i++) {
                 var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${thirdEvo[i]}`);
                 var data = await response.json();
-                pokemonEvolutionLine.innerHTML += `<img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">`
+                if (i == 0) {
+                    pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
+                                                            <span>Estágio 2</span>
+                                                            <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                            <span>${thirdEvo[i]}</span>
+                                                            <span>#${data.id}</span>
+                                                        </div>`;
+                } else {
+                    pokemonEvolutionLine.innerHTML += ` <span style="color: #2B2D42;font-size: 16px;">OU</span>
+                                                        <div class="evoLinePokemon">
+                                                            <span>Estágio 2</span>
+                                                            <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
+                                                            <span>${thirdEvo[i]}</span>
+                                                            <span>#${data.id}</span>
+                                                        </div>`;
+                }
             }
         } else {
             var firstEvo = data.chain.species.name;
