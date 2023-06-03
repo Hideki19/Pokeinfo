@@ -49,86 +49,81 @@
             <table id="myTable">
                 <tr>
                     <th id="th_titulo"><p>DEFESA &#129046;</p> <p>ATAQUE &#8628;</p> </th>
-                    <th>NOR</th>
-                    <th>FIR</th>
-                    <th>WAT</th>
-                    <th>ELE</th>
-                    <th>GRA</th>
-                    <th>ICE</th>
-                    <th>FIG</th>
-                    <th>POI</th>
-                    <th>GRO</th>
-                    <th>FLY</th>
-                    <th>PSY</th>
-                    <th>BUG</th>
-                    <th>ROC</th>
-                    <th>GHO</th>
-                    <th>DRA</th>
-                    <th>DAR</th>
-                    <th>STE</th>
-                    <th>FAI</th>
+                    <th class="normal">NOR</th>
+                    <th class="fire">FIR</th>
+                    <th class="water">WAT</th>
+                    <th class="electric">ELE</th>
+                    <th class="grass">GRA</th>
+                    <th class="ice">ICE</th>
+                    <th class="fighting">FIG</th>
+                    <th class="poison">POI</th>
+                    <th class="ground">GRO</th>
+                    <th class="flying">FLY</th>
+                    <th class="psychic">PSY</th>
+                    <th class="bug">BUG</th>
+                    <th class="rock">ROC</th>
+                    <th class="ghost">GHO</th>
+                    <th class="dragon">DRA</th>
+                    <th class="dark">DAR</th>
+                    <th class="steel">STE</th>
+                    <th class="fairy">FAI</th>
                   </tr>
                 
-                <tr class="type-column" id="tr_normal">
-                    <td>NORMAL</td>
+                <tr id="tr_normal">
+                    <td class="type-column, normal">NORMAL</td>
                 </tr>
                 <tr id="tr_fire">
-                    <td>FIRE</td>
+                    <td class="type-column, fire">FIRE</td>
                 </tr>
                 <tr id="tr_water">
-                    <td>WATER</td>   
+                    <td class="type-column, water">WATER</td>   
                 </tr>
                 <tr id="tr_electric">
-                    <td>ELECTRIC</td>
+                    <td class="type-column, electric">ELECTRIC</td>
                 </tr>
                 <tr id="tr_grass">
-                    <td>GRASS</td>
+                    <td class="type-column, grass"s>GRASS</td>
                 </tr>
                 <tr id="tr_ice">
-                    <td>ICE</td>
+                    <td class="type-column, ice">ICE</td>
                 </tr>
                 <tr id="tr_fighting">
-                    <td>FIGHTING</td>
+                    <td class="type-column, fighting">FIGHTING</td>
                 </tr>
                 <tr id="tr_poison">
-                    <td>POISON</td>
+                    <td class="type-column, poison">POISON</td>
                 </tr>
                 <tr id="tr_ground">
-                    <td>GROUND</td>
+                    <td class="type-column, ground">GROUND</td>
                 </tr>
                 <tr id="tr_flying">
-                    <td>FLYING</td>
+                    <td class="type-column, flying">FLYING</td>
                 </tr>
                 <tr id="tr_psychic">
-                    <td>PSYCHIC</td>   
+                    <td class="type-column, psychic">PSYCHIC</td>   
                 </tr>
                 <tr id="tr_bug">
-                    <td>BUG</td>
+                    <td class="type-column, bug">BUG</td>
                 </tr>
                 <tr id="tr_rock">
-                    <td>ROCK</td>
+                    <td class="type-column, rock">ROCK</td>
                 </tr>
                 <tr id="tr_ghost">
-                    <td>GHOST</td>
+                    <td class="type-column, ghost">GHOST</td>
                 </tr>
                 <tr id="tr_dragon">
-                    <td>DRAGON</td>
+                    <td class="type-column, dragon">DRAGON</td>
                 </tr>
                 <tr id="tr_dark">
-                    <td>DARK</td>
+                    <td class="type-column, dark">DARK</td>
                 </tr>
                 <tr id="tr_steel">
-                    <td>STEEL</td>
+                    <td class="type-column, steel">STEEL</td>
                 </tr>
                 <tr id="tr_fairy">
-                    <td>FAIRY</td>
+                    <td class="type-column, fairy">FAIRY</td>
                 </tr>
               </table>
-              <br> 
-              
-              <button onclick="myFunction()">Try it</button>
-              
-              <p id="demo"></p>
         </div>
     </div>
     
@@ -446,12 +441,5 @@
             x.classList.add("normal-dmg");
         }
     }
-
-
-    function myFunction() {
-      var x = document.getElementById("myTable").rows.length;
-      document.getElementById("demo").innerHTML = "Found " + x + " tr elements in the table.";
-    }
-
 </script>
 

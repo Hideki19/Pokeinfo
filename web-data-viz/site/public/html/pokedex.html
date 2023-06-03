@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/script-pokedex.js"></script>
+    <script src="../js/script-type-chart.js"></script>
     <title>Pokeinfo | Pokedex</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style-pokedex.css">
@@ -246,10 +247,130 @@
                 <div id="pokemonInfo"></div>
                 <div id="pokemonStats"></div>
                 <div id="pokemonEvolutionLine"></div>
-                <div id="pokemonTypeChart"></div>
+                <div id="pokemonTypeChart">
+                    <table>
+                        <tr>
+                            <th class="normal">NOR</th>
+                            <th class="fire">FIR</th>
+                            <th class="water">WAT</th>
+                            <th class="electric">ELE</th>
+                            <th class="grass">GRA</th>
+                            <th class="ice">ICE</th>
+                            <th class="fighting">FIG</th>
+                            <th class="poison">POI</th>
+                            <th class="ground">GRO</th>
+                        </tr>
+                        <tr id="weakness1">
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="flying">FLY</th>
+                            <th class="psychic">PSY</th>
+                            <th class="bug">BUG</th>
+                            <th class="rock">ROC</th>
+                            <th class="ghost">GHO</th>
+                            <th class="dragon">DRA</th>
+                            <th class="dark">DAR</th>
+                            <th class="steel">STE</th>
+                            <th class="fairy">FAI</th>
+                        </tr>
+                        <tr id="weakness2">
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
     
 </body>
 </html>
+
+<script>
+    var typeChartDefensive = {
+    "normal": [1,1,1,1,1,1,2,1,1,1,1,1,1,0,1,1,1,1],
+    "fire": [1,1 / 2,2,1,1 / 2,1,1,1,2,1,1,1 / 2,2,1,1,1,1 / 2,1 / 2],
+    "water": [1,1 / 2,1 / 2,2, 2, 1 / 2,1,1,1,1,1,1,1,1,1,1,1 / 2,1],
+    "electric": [1,1,1,1 / 2, 1, 1,1,1,2,1 / 2,1,1,1,1,1,1,1 / 2,1],
+    "grass": [1,2,1 / 2,1 / 2, 1 / 2, 2,1,2,1 / 2,2,1,2,1,1,1,1,1,1],
+    "ice": [1,2,1,1, 1, 1 / 2,2,1,1,1,1,1,2,1,1,1,2,1],
+    "fighting": [1,1,1,1, 1, 1,1,1,1,2,2,1 / 2,1 / 2,1,1,1 / 2,1,2],
+    "poison": [1,1,1,1, 1 / 2, 1,1 / 2,1 / 2,2,1,2,1 / 2,1,1,1,1,1,1 / 2],
+    "ground": [1,1,2,0, 2, 2,1,1 / 2,1,1,1,1,1 / 2,1,1,1,1,1],
+    "flying": [1,1,1,2, 1 / 2, 2,1 / 2,1,0,1,1,1 / 2,2,1,1,1,1,1],
+    "psychic": [1,1,1,1, 1, 1,1 / 2,1,1,1,1 / 2,2,1,2,1,2,1,1],
+    "bug": [1,2,1,1, 1 / 2,2, 1,1 / 2,1,1 / 2,2,1,1,2,1,1,1,1,1],
+    "rock": [1 / 2,1 / 2,2,1, 2, 1,2,1 / 2,2,1 / 2,1,1,1,1,1,1,2,1],
+    "ghost": [0,1,1,1, 1, 1,0,1 / 2,1,1,1,1 / 2,1,2,1,2,1,1],
+    "dragon": [1,1 / 2,1 / 2,1 / 2, 1 / 2, 2,1,1,1,1,1,1,1,1,2,1,1,2],
+    "dark": [1,1,1,1, 1, 1,2,1,1,1,0,2,1,1 / 2,1,1 / 2,1,2],
+    "steel": [1 / 2,2,1,1, 1 / 2, 1 / 2,2,0,2,1 / 2,1 / 2,1 / 2,1 / 2,1,1 / 2,1,1 / 2,1 / 2],
+    "fairy": [1,1,1,1, 1, 1,1 / 2,2,1,1,1,1 / 2,1,1,0,1 / 2,2,1],
+
+}
+
+
+
+function pokedexTypeChart(type1, type2) {
+    weakness1.innerHTML = '';
+    weakness2.innerHTML = '';
+
+    if (type1.length > 0 && type2.length > 0) { // Dual type
+        var type1Weakness = typeChartDefensive[type1];
+        var type2Weakness = typeChartDefensive[type2];
+        var typesWeakness = [];
+
+        for (index = 0; index < type1Weakness.length; index++) {
+            typesWeakness.push(type1Weakness[index] * type2Weakness[index]); 
+        }
+        console.log(typesWeakness);
+    
+    } else { // Single type
+        var typesWeakness = typeChartDefensive[type1];
+        console.log(typesWeakness)
+    }
+    for (var i = 0; i < typesWeakness.length/2; i++) {
+            var row = document.getElementById("weakness1");
+            var x = row.insertCell(i);
+            x.innerHTML = typesWeakness[i];
+            
+            if (typesWeakness[i] == 0) { // immune
+                x.classList.add("immune");
+            } else if (typesWeakness[i] == 1/4) { // not very effective (1/4)
+                x.innerHTML = '¼';
+                x.classList.add("not-very-effective-1");
+            } else if (typesWeakness[i] == 1/2) { // not very effective
+                x.innerHTML = '½';
+                x.classList.add("not-very-effective");
+            } else if (typesWeakness[i] == 2) { // super effective
+                x.classList.add("super-effective");
+            } else if (typesWeakness[i] == 4) { // super effective (x4)
+                x.classList.add("super-effective-1");
+            } else { // normal
+                x.classList.add("normal-dmg");
+            }
+            
+        }
+        for (var i = 0; i < typesWeakness.length/2; i++) {
+            var row = document.getElementById("weakness2");
+            var x = row.insertCell(i);
+            x.innerHTML = typesWeakness[i+9];
+            
+            if (typesWeakness[i+9] == 0) { // immune
+                x.classList.add("immune");
+            } else if (typesWeakness[i+9] == 1/4) { // not very effective (1/4)
+                x.innerHTML = '¼';
+                x.classList.add("not-very-effective-1");
+            } else if (typesWeakness[i+9] == 1/2) { // not very effective (1/2)
+                x.innerHTML = '½';
+                x.classList.add("not-very-effective");
+            } else if (typesWeakness[i+9] == 2) { // super effective
+                x.classList.add("super-effective");
+            } else { // normal
+                x.classList.add("normal-dmg");
+            }
+            
+        }       
+}
+</script>
+

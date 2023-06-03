@@ -31,7 +31,10 @@ th {
     width: 40px;
     height: 40px;
     padding: 0;
-    border: solid 1px #000000;
+    border: solid 1px #354C73;
+    font-size: 14px;
+    font-weight: normal;
+    color: #EDF2F4;
 }
 
 td {
@@ -39,36 +42,19 @@ td {
     height: 40px;
     padding: 0;
     text-align: center;
-    border: solid 1px #000000;
+    border: solid 1px #354C73;
+    color: #EDF2F4;
+    font-size: 14px;
 }
 
 #th_titulo {
+    color: #354C73;
     font-size: 12px;
-}
-
-.immune {
-    background-color: #000000;
-    color: #FEFA00;
     font-weight: bold;
 }
 
-.not-very-effective {
-    background-color: #EA0000;
-    color: #FEFA00;
-    font-weight: bold;
-    font-size: 24px;
+.type-column {
+    width: 80px;
+    font-size: 14px;
 }
 
-.super-effective {
-    background-color: #25BB00;
-    color: #FEFA00;
-    font-weight: bold;
-
-}
-
-.normal-dmg {
-    background-color: #EDF2F4;
-    color: #EDF2F4;
-    font-weight: bold;
-
-}

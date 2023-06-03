@@ -293,3 +293,124 @@ header .container #ul_header #header_buttons #btn_cadastrar{
 }
 
 /*---------------FIM CARD 4-------------------*/
+
+/*-------------INÍCIO TIPOS-------------------*/
+
+.normal {
+    background-color: #aa9;
+}
+
+.fire {
+    background-color: #f42;;
+}
+
+.water {
+    background-color: #39f;
+}
+
+.electric {
+    background-color: #fc3;;
+}
+
+.grass {
+    background-color: #7c5;
+}
+
+.ice {
+    background-color: #6cf;
+}
+
+.fighting {
+    background-color: #b54;
+}
+
+.poison {
+    background-color: #a59;
+}
+
+.ground {
+    background-color: #db5;
+}
+
+.flying {
+    background-color: #89f;
+}
+
+.psychic {
+    background-color: #f59;
+}
+
+.bug {
+    background-color: #ab2;
+}
+
+.rock {
+    background-color: #ba6;
+}
+
+.ghost {
+    background-color: #66b;
+}
+
+.dragon {
+    background-color: #76e;
+}
+
+.dark {
+    background-color: #754;
+}
+
+.steel {
+    background-color: #aab;
+}
+
+.fairy {
+    background-color: #e9e;
+}
+
+/*-----------------FIM TIPOS-------------------*/
+
+/*--------INÍCIO EFETIVIDADE DOS TIPOS---------*/
+
+.immune {
+    background-color: #000000;
+    color: #FEFA00;
+    font-weight: bold;
+}
+
+.not-very-effective-1 {
+    background-color: #990000;
+    color: #FEFA00;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.not-very-effective {
+    background-color: #EA0000;
+    color: #FEFA00;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.super-effective {
+    background-color: #25BB00;
+    color: #FEFA00;
+    font-weight: bold;
+
+}
+
+.super-effective-1 {
+    background-color: #1d8e01;
+    color: #FEFA00;
+    font-weight: bold;
+
+}
+
+.normal-dmg {
+    background-color: #EDF2F4;
+    color: #EDF2F4;
+    font-weight: bold;
+
+}
+
+/*----------FIM EFETIVIDADE DOS TIPOS---------*/
