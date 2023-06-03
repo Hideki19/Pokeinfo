@@ -192,12 +192,12 @@ async function fetchPokemon(id) {
     //     console.log("Este pokemon tem tres evoluçoes");
     // }
 
-    pokemonEvolutionLine.innerHTML += `<div id="evoLineTitulo"><span>Linha evolutiva</span></div>`
+    pokemonEvolutionLine.innerHTML += `<div id="evoLineTitulo"><span class="subtitulo">Linha evolutiva</span></div>`
 
     // Zero evo
     if (data.chain.evolves_to.length == 0) { //No evolution
         var firstEvo = data.chain.species.name;
-        pokemonEvolutionLine.innerHTML += `<span>Esse pokemon não evolui</span>`
+        pokemonEvolutionLine.innerHTML += `<span class="subtitulo2">Esse pokemon não evolui</span>`
         console.log(firstEvo);
     } else if (data.chain.evolves_to[0].evolves_to.length == 0) { // One evolution
         if (data.chain.evolves_to.length == 2) { // One evolution two options
@@ -211,7 +211,7 @@ async function fetchPokemon(id) {
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${firstEvo}`);
             var data = await response.json();
             pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
-                                                    <span>base form</span>
+                                                    <span>Forma Básica</span>
                                                     <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
                                                     <span>${firstEvo}</span>
                                                     <span>#${data.id}</span>
@@ -220,7 +220,7 @@ async function fetchPokemon(id) {
                 var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${secondEvo1}-plant`);
                 var data = await response.json();
                 pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
-                                                        <span>base form</span>
+                                                        <span>Forma Básica</span>
                                                         <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
                                                         <span>${firstEvo}</span>
                                                         <span>#${data.id}</span>
@@ -310,7 +310,7 @@ async function fetchPokemon(id) {
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${firstEvo}`);
             var data = await response.json();
             pokemonEvolutionLine.innerHTML += `<div class="evoLinePokemon">
-                                                    <span>base form</span>
+                                                    <span>Forma Básica</span>
                                                     <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
                                                     <span>${firstEvo}</span>
                                                     <span>#${data.id}</span>
@@ -318,7 +318,7 @@ async function fetchPokemon(id) {
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${secondEvo}`);
             var data = await response.json();
             pokemonEvolutionLine.innerHTML += `<div class="evoLinePokemon">
-                                                    <span>middle form</span>
+                                                    <span>Estágio 1</span>
                                                     <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
                                                     <span>${secondEvo}</span>
                                                     <span>#${data.id}</span>
@@ -394,7 +394,7 @@ async function fetchPokemon(id) {
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${firstEvo}`);
             var data = await response.json();
             pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
-                                                        <span>base form</span>
+                                                        <span>Forma Básica</span>
                                                         <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
                                                         <span>${firstEvo}</span>
                                                         <span>#${data.id}</span>
@@ -403,7 +403,7 @@ async function fetchPokemon(id) {
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${secondEvo}`);
             var data = await response.json();
             pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
-                                                    <span>middle form</span>
+                                                    <span>Estágio 1</span>
                                                     <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
                                                     <span>${secondEvo}</span>
                                                     <span>#${data.id}</span>
@@ -411,7 +411,7 @@ async function fetchPokemon(id) {
             var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${thirdEvo}`);
             var data = await response.json();
             pokemonEvolutionLine.innerHTML += ` <div class="evoLinePokemon">
-                                                    <span>final form</span>
+                                                    <span>Estágio 2</span>
                                                     <img class="evoLineImg" src="${data['sprites']['other']['official-artwork']['front_default']}" alt="">
                                                     <span>${thirdEvo}</span>
                                                     <span>#${data.id}</span>
@@ -421,13 +421,13 @@ async function fetchPokemon(id) {
 
     // Linha evolutiva
 
-    pokedexTypeChart(tipo1, tipo2);    
+    pokedexTypeChart(tipo1, tipo2); // pokedex.html    
 
 }
 
 function grafico() {
     pokemonStats.innerHTML = ''
-    pokemonStats.innerHTML = '<canvas id="pokemonStatsGraph" width=500px></canvas>'
+    pokemonStats.innerHTML = '<canvas id="pokemonStatsGraph" width=500px height=300px></canvas>'
 
     // Cores do gráfico relativa aos valores dos stats
     var coresGrafico = [];

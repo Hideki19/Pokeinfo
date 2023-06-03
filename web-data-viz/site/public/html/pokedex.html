@@ -246,38 +246,43 @@
                 <img id="pokemonImg" src="" alt="">
                 <div id="pokemonInfo"></div>
                 <div id="pokemonStats"></div>
-                <div id="pokemonEvolutionLine"></div>
-                <div id="pokemonTypeChart">
-                    <table>
-                        <tr>
-                            <th class="normal">NOR</th>
-                            <th class="fire">FIR</th>
-                            <th class="water">WAT</th>
-                            <th class="electric">ELE</th>
-                            <th class="grass">GRA</th>
-                            <th class="ice">ICE</th>
-                            <th class="fighting">FIG</th>
-                            <th class="poison">POI</th>
-                            <th class="ground">GRO</th>
-                        </tr>
-                        <tr id="weakness1">
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th class="flying">FLY</th>
-                            <th class="psychic">PSY</th>
-                            <th class="bug">BUG</th>
-                            <th class="rock">ROC</th>
-                            <th class="ghost">GHO</th>
-                            <th class="dragon">DRA</th>
-                            <th class="dark">DAR</th>
-                            <th class="steel">STE</th>
-                            <th class="fairy">FAI</th>
-                        </tr>
-                        <tr id="weakness2">
-                            <td></td>
-                        </tr>
-                    </table>
+                <div style="width: 100%; display: flex; flex-direction: row; justify-content: center;">
+
+                    <div id="pokemonEvolutionLine"></div>
+                    <div id="pokemonTypeChart" style="display: none;">
+                        <span class="subtitulo">Tabela de tipos defensiva</span>
+                        <span class="subtitulo2">Representação da eficácia de cada tipo no pokémon.</span>
+                        <table>
+                            <tr>
+                                <th class="normal">NOR</th>
+                                <th class="fire">FIR</th>
+                                <th class="water">WAT</th>
+                                <th class="electric">ELE</th>
+                                <th class="grass">GRA</th>
+                                <th class="ice">ICE</th>
+                                <th class="fighting">FIG</th>
+                                <th class="poison">POI</th>
+                                <th class="ground">GRO</th>
+                            </tr>
+                            <tr id="weakness1">
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th class="flying">FLY</th>
+                                <th class="psychic">PSY</th>
+                                <th class="bug">BUG</th>
+                                <th class="rock">ROC</th>
+                                <th class="ghost">GHO</th>
+                                <th class="dragon">DRA</th>
+                                <th class="dark">DAR</th>
+                                <th class="steel">STE</th>
+                                <th class="fairy">FAI</th>
+                            </tr>
+                            <tr id="weakness2">
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -312,6 +317,7 @@
 
 
 function pokedexTypeChart(type1, type2) {
+    pokemonTypeChart.style.display = 'flex';
     weakness1.innerHTML = '';
     weakness2.innerHTML = '';
 

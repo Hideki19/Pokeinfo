@@ -22,11 +22,12 @@ button {
 }
 
 .main {
-    height: 150vh;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     background: linear-gradient(180deg, #354C73 0%, #8D99AE 53.12%, #354C73 100%); 
+    padding-bottom: 100px;
 }
 
 .titulo {
@@ -43,13 +44,14 @@ button {
 
 .box {
     width: 80vw;
-    height: 100vh;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 5%;
     background-color: #EDF2F4;
     border-radius: 20px;
+    padding-bottom: 50px;
 }
 
 #pokemonName {
@@ -98,24 +100,31 @@ button {
 }
 
 #pokemonEvolutionLine {
-    width: 60%;
+    min-width: fit-content;
+    max-width: 60%;
+    height: 100%;
     height: fit-content ;
     display: flex;
-    margin-top: 1%;
     flex-wrap: wrap;
+    margin-top: 1%;
 }
 
 #evoLineTitulo {
     width: 100%;
-    height: fit-content;
 }
 
 .evoLinePokemon {
-    width: 20%;
+    width: 180px;
+    height: 265px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 1%;
+    justify-content: space-evenly;
+}
+
+.evoLinePokemon span {
+    color: #2B2D42;
 }
 
 .evoLineImg {
@@ -146,4 +155,44 @@ button {
     width: 30%;
     height: 300px;
     margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.subtitulo {
+    color: #2B2D42;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.subtitulo2 {
+    color: #2B2D42;
+    font-size: 18px;
+}
+
+
+tr {
+    height: 40px;
+    padding: 0;
+}
+
+th {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: solid 1px #354C73;
+    font-size: 14px;
+    font-weight: normal;
+    color: #EDF2F4;
+}
+
+td {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    text-align: center;
+    border: solid 1px #354C73;
+    color: #EDF2F4;
+    font-size: 14px;
 }
