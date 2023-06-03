@@ -31,6 +31,7 @@ th {
     width: 40px;
     height: 40px;
     padding: 0;
+    border: solid 1px #000000;
 }
 
 td {
@@ -38,4 +39,36 @@ td {
     height: 40px;
     padding: 0;
     text-align: center;
+    border: solid 1px #000000;
+}
+
+#th_titulo {
+    font-size: 12px;
+}
+
+.immune {
+    background-color: #000000;
+    color: #FEFA00;
+    font-weight: bold;
+}
+
+.not-very-effective {
+    background-color: #EA0000;
+    color: #FEFA00;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.super-effective {
+    background-color: #25BB00;
+    color: #FEFA00;
+    font-weight: bold;
+
+}
+
+.normal-dmg {
+    background-color: #EDF2F4;
+    color: #EDF2F4;
+    font-weight: bold;
+
 }

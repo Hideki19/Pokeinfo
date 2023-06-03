@@ -48,7 +48,7 @@
             <span>Tabela Geral</span>
             <table id="myTable">
                 <tr>
-                    <th></th>
+                    <th id="th_titulo"><p>DEFESA &#129046;</p> <p>ATAQUE &#8628;</p> </th>
                     <th>NOR</th>
                     <th>FIR</th>
                     <th>WAT</th>
@@ -68,7 +68,8 @@
                     <th>STE</th>
                     <th>FAI</th>
                   </tr>
-                <tr id="tr_normal">
+                
+                <tr class="type-column" id="tr_normal">
                     <td>NORMAL</td>
                 </tr>
                 <tr id="tr_fire">
@@ -88,7 +89,6 @@
                 </tr>
                 <tr id="tr_fighting">
                     <td>FIGHTING</td>
-                    
                 </tr>
                 <tr id="tr_poison">
                     <td>POISON</td>
@@ -138,523 +138,316 @@
     var types = ['normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'];
 
     var typeChartOffensive = {
-    normal: [
-        {normal: 1}, 
-        {fire: 1}, 
-        {water: 1}, 
-        {electric: 1}, 
-        {grass: 1}, 
-        {ice: 1}, 
-        {fighting: 1}, 
-        {poison: 1}, 
-        {ground: 1}, 
-        {flying: 1}, 
-        {psychic: 1}, 
-        {bug: 1}, 
-        {rock: 1/2}, 
-        {ghost: 0}, 
-        {dragon: 1}, 
-        {dark: 1}, 
-        {steel: 1}, 
-        {fairy: 1}
-    ],
-    fire: [
-        {normal: 1}, 
-        {fire: 1/2}, 
-        {water: 1/2}, 
-        {electric: 1}, 
-        {grass: 2}, 
-        {ice: 2}, 
-        {fighting: 1}, 
-        {poison: 1}, 
-        {ground: 1}, 
-        {flying: 1}, 
-        {psychic: 1}, 
-        {bug: 2}, 
-        {rock: 1/2}, 
-        {ghost: 1}, 
-        {dragon: 1/2}, 
-        {dark: 1}, 
-        {steel: 2}, 
-        {fairy: 1}
-    ],
-    water: [
-        {normal: 1}, 
-        {fire: 2}, 
-        {water: 1/2}, 
-        {electric: 1}, 
-        {grass: 1/2}, 
-        {ice: 1}, 
-        {fighting: 1}, 
-        {poison: 1}, 
-        {ground: 2}, 
-        {flying: 1}, 
-        {psychic: 1}, 
-        {bug: 1}, 
-        {rock: 2}, 
-        {ghost: 1}, 
-        {dragon: 1/2}, 
-        {dark: 1}, 
-        {steel: 1}, 
-        {fairy: 1}
-    ],
-    electric: [
-        {normal: 1}, 
-        {fire: 1}, 
-        {water: 2}, 
-        {electric: 1/2}, 
-        {grass: 1/2}, 
-        {ice: 1}, 
-        {fighting: 1}, 
-        {poison: 1}, 
-        {ground: 0}, 
-        {flying: 2}, 
-        {psychic: 1}, 
-        {bug: 1}, 
-        {rock: 1}, 
-        {ghost: 1}, 
-        {dragon: 1/2}, 
-        {dark: 1}, 
-        {steel: 1}, 
-        {fairy: 1}
-    ],
-    grass: [
-        {normal: 1}, 
-        {fire: 1/2}, 
-        {water: 2}, 
-        {electric: 1}, 
-        {grass: 1/2}, 
-        {ice: 1}, 
-        {fighting: 1}, 
-        {poison: 1/2}, 
-        {ground: 2}, 
-        {flying: 1/2}, 
-        {psychic: 1}, 
-        {bug: 1/2}, 
-        {rock: 2}, 
-        {ghost: 1}, 
-        {dragon: 1/2}, 
-        {dark: 1}, 
-        {steel: 1/2}, 
-        {fairy: 1}
-    ],
-    ice: [
-        {normal: 1}, 
-        {fire: 1/2}, 
-        {water: 1/2}, 
-        {electric: 1}, 
-        {grass: 2}, 
-        {ice: 1/2}, 
-        {fighting: 1}, 
-        {poison: 1}, 
-        {ground: 2}, 
-        {flying: 2}, 
-        {psychic: 1}, 
-        {bug: 1}, 
-        {rock: 1}, 
-        {ghost: 1}, 
-        {dragon: 2}, 
-        {dark: 1}, 
-        {steel: 1/2}, 
-        {fairy: 1}
-    ],
-    fighting: [
-        {normal: 2}, 
-        {fire: 1}, 
-        {water: 1}, 
-        {electric: 1}, 
-        {grass: 1}, 
-        {ice: 2}, 
-        {fighting: 1}, 
-        {poison: 1/2}, 
-        {ground: 1}, 
-        {flying: 1/2}, 
-        {psychic: 1/2}, 
-        {bug: 1/2}, 
-        {rock: 2}, 
-        {ghost: 0}, 
-        {dragon: 1}, 
-        {dark: 2}, 
-        {steel: 2}, 
-        {fairy: 1/2}
-    ],
-    poison: [
-        {normal: 1}, 
-        {fire: 1}, 
-        {water: 1}, 
-        {electric: 1}, 
-        {grass: 2}, 
-        {ice: 1}, 
-        {fighting: 1}, 
-        {poison: 1/2}, 
-        {ground: 1/2}, 
-        {flying: 1}, 
-        {psychic: 1}, 
-        {bug: 1}, 
-        {rock: 1/2}, 
-        {ghost: 1/2}, 
-        {dragon: 1}, 
-        {dark: 1}, 
-        {steel: 0}, 
-        {fairy: 2}
-    ],
-    ground: [
-        {normal: 1}, 
-        {fire: 2}, 
-        {water: 1}, 
-        {electric: 2}, 
-        {grass: 1/2}, 
-        {ice: 1}, 
-        {fighting: 1}, 
-        {poison: 2}, 
-        {ground: 1}, 
-        {flying: 0}, 
-        {psychic: 1}, 
-        {bug: 1/2}, 
-        {rock: 2}, 
-        {ghost: 1}, 
-        {dragon: 1}, 
-        {dark: 1}, 
-        {steel: 2}, 
-        {fairy: 1}
-    ],
-    flying: [
-        {normal: 1}, 
-        {fire: 1}, 
-        {water: 1}, 
-        {electric: 1/2}, 
-        {grass: 2}, 
-        {ice: 1}, 
-        {fighting: 2}, 
-        {poison: 1}, 
-        {ground: 1}, 
-        {flying: 1}, 
-        {psychic: 1}, 
-        {bug: 2}, 
-        {rock: 1/2}, 
-        {ghost: 1}, 
-        {dragon: 1}, 
-        {dark: 1}, 
-        {steel: 1/2}, 
-        {fairy: 1}
-    ],
-    psychic: [
-        {normal: 1}, 
-        {fire: 1}, 
-        {water: 1}, 
-        {electric: 1}, 
-        {grass: 1}, 
-        {ice: 1}, 
-        {fighting: 2}, 
-        {poison: 2}, 
-        {ground: 1}, 
-        {flying: 1}, 
-        {psychic: 1/2}, 
-        {bug: 1}, 
-        {rock: 1}, 
-        {ghost: 1}, 
-        {dragon: 1}, 
-        {dark: 0}, 
-        {steel: 1/2}, 
-        {fairy: 1/2}
-    ],
-    bug: [
-        {normal: 1}, 
-        {fire: 1/2}, 
-        {water: 1}, 
-        {electric: 1}, 
-        {grass: 2}, 
-        {ice: 1}, 
-        {fighting: 1/2}, 
-        {poison: 1/2}, 
-        {ground: 1}, 
-        {flying: 1/2}, 
-        {psychic: 2}, 
-        {bug: 1}, 
-        {rock: 1}, 
-        {ghost: 1/2}, 
-        {dragon: 1}, 
-        {dark: 2}, 
-        {steel: 1/2}, 
-        {fairy: 1/2}
-    ],
-    rock: [
-        {normal: 1}, 
-        {fire: 2}, 
-        {water: 1}, 
-        {electric: 1}, 
-        {grass: 1}, 
-        {ice: 2}, 
-        {fighting: 1/2}, 
-        {poison: 1}, 
-        {ground: 1/2}, 
-        {flying: 2}, 
-        {psychic: 1}, 
-        {bug: 2}, 
-        {rock: 1}, 
-        {ghost: 1}, 
-        {dragon: 1}, 
-        {dark: 1}, 
-        {steel: 1/2}, 
-        {fairy: 1}
-    ],
-    ghost: [
-        {normal: 0}, 
-        {fire: 1}, 
-        {water: 1}, 
-        {electric: 1}, 
-        {grass: 1}, 
-        {ice: 1}, 
-        {fighting: 1}, 
-        {poison: 1}, 
-        {ground: 1}, 
-        {flying: 1}, 
-        {psychic: 2}, 
-        {bug: 1}, 
-        {rock: 1}, 
-        {ghost: 2}, 
-        {dragon: 1}, 
-        {dark: 1/2}, 
-        {steel: 1}, 
-        {fairy: 1}
-    ],
-    dragon: [
-        {normal: 1}, 
-        {fire: 1}, 
-        {water: 1}, 
-        {electric: 1}, 
-        {grass: 1}, 
-        {ice: 1}, 
-        {fighting: 1}, 
-        {poison: 1}, 
-        {ground: 1}, 
-        {flying: 1}, 
-        {psychic: 1}, 
-        {bug: 1}, 
-        {rock: 1}, 
-        {ghost: 1}, 
-        {dragon: 2}, 
-        {dark: 1}, 
-        {steel: 1/2}, 
-        {fairy: 0}
-    ],
-    dark: [
-        {normal: 1}, 
-        {fire: 1}, 
-        {water: 1}, 
-        {electric: 1}, 
-        {grass: 1}, 
-        {ice: 1}, 
-        {fighting: 1/2}, 
-        {poison: 1}, 
-        {ground: 1}, 
-        {flying: 1}, 
-        {psychic: 2}, 
-        {bug: 1}, 
-        {rock: 1}, 
-        {ghost: 2}, 
-        {dragon: 1}, 
-        {dark: 1/2}, 
-        {steel: 1}, 
-        {fairy: 1/2}
-    ],
-    steel: [
-        {normal: 1}, 
-        {fire: 1/2}, 
-        {water: 1/2}, 
-        {electric: 1/2}, 
-        {grass: 1}, 
-        {ice: 2}, 
-        {fighting: 1}, 
-        {poison: 1}, 
-        {ground: 1}, 
-        {flying: 1}, 
-        {psychic: 1}, 
-        {bug: 1}, 
-        {rock: 2}, 
-        {ghost: 1}, 
-        {dragon: 1/2}, 
-        {dark: 1}, 
-        {steel: 1/2}, 
-        {fairy: 2}
-    ],
-    fairy: [
-        {normal: 1}, 
-        {fire: 1/2}, 
-        {water: 1}, 
-        {electric: 1}, 
-        {grass: 1}, 
-        {ice: 1}, 
-        {fighting: 2}, 
-        {poison: 1/2}, 
-        {ground: 1}, 
-        {flying: 1}, 
-        {psychic: 1}, 
-        {bug: 1}, 
-        {rock: 1}, 
-        {ghost: 1}, 
-        {dragon: 2}, 
-        {dark: 2}, 
-        {steel: 1/2}, 
-        {fairy: 1}
-    ],
+        normal: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1/2, 0, 1, 1, 1/2, 1],
+        fire: [1, 1/2, 1/2, 1, 2, 2, 1 , 1 ,1 , 1 ,1 ,2 ,1/2 ,1 ,1/2 ,1 ,2 ,1],
+        water: [1 ,2 ,1 / 2 ,1 ,1 / 2 ,1 ,1 ,1 ,2 ,1 ,1 ,1 ,2 ,1 ,1 / 2 ,1 ,1 ,1],
+        electric: [1 ,1 ,2 ,1 / 2 ,1 / 2 ,1 ,1 ,1 ,0 ,2 ,1 ,1 ,1 ,1 ,1 / 2 ,1 ,1 ,1],
+        grass: [1 ,1 / 2 ,2 ,1 ,1 / 2 ,1 ,1 ,1 / 2 ,2 ,1 / 2 ,1 ,1 / 2 ,2 ,1 ,1 / 2 ,1 ,1 / 2 ,1],
+        ice: [1 ,1 / 2 ,1 / 2 ,1 ,2 ,1 / 2 ,1 ,1 ,2 ,2 ,1 ,1 ,1 ,1 ,2 ,1 ,1 / 2 ,1],
+        fighting: [2 ,1 ,1 ,1 ,1 ,2 ,1 ,1 / 2 ,1 ,1 / 2 ,1 / 2 ,1 / 2 ,2 ,0 ,1 ,2 ,2 ,1 / 2],
+        poison: [1 ,1 ,1 ,1 ,2 ,1 ,1 ,1 / 2 ,1 / 2 ,1 ,1 ,1 ,1 / 2 ,1 / 2 ,1 ,1 ,0 ,2],
+        ground: [1 ,2 ,1 ,2 ,1 / 2 ,1 ,1 ,2 ,1 ,0 ,1 ,1 / 2 ,2 ,1 ,1 ,1 ,2 ,1],
+        flying: [1 ,1 ,1 ,1 / 2 ,2 ,1 ,2 ,1 ,1 ,1 ,1 ,2 ,1 / 2 ,1 ,1 ,1 ,1 / 2 ,1],
+        psychic: [1 ,1 ,1 ,1 ,1 ,1 ,2 ,2 ,1 ,1 ,1 / 2 ,1 ,1 ,1 ,1 ,0 ,1 / 2 ,1 / 2],
+        bug: [1 ,1 / 2 ,1 ,1 ,2 ,1 ,1 / 2 ,1 / 2 ,1 ,1 / 2 ,2 ,1 ,1 ,1 / 2 ,1 ,2 ,1 / 2 ,1 / 2],
+        rock: [1 ,2 ,1 ,1 ,1 ,2 ,1 / 2 ,1 ,1 / 2 ,2 ,1 ,2 ,1 ,1 ,1 ,1 ,1 / 2 ,1],
+        ghost: [0 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,2 ,1 ,1 ,2 ,1 ,1 / 2 ,1 ,1],
+        dragon: [1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,2 ,1 ,1 / 2 ,0],
+        dark: [1 ,1 ,1 ,1 ,1 ,1 ,1 / 2 ,1 ,1 ,1 ,2 ,1 ,1 ,2 ,1 ,1 / 2 ,1 ,1 / 2],
+        steel: [1 ,1 / 2 ,1 / 2 ,1 / 2 ,1 ,2 ,1 ,1 ,1 ,1 ,1 ,1 ,2 ,1 ,1 / 2 ,1 ,1 / 2 ,2],
+        fairy: [1 ,1 / 2 ,1 ,1 ,1 ,1 ,2 ,1 / 2 ,1 ,1 ,1 ,1 ,1 ,1 ,2 ,2 ,1 / 2 ,1 ]
+    }
 
-} 
-    for (var i = 0; i < typeChartOffensive.normal.length; i++) { // FIRE
+    for (var i = 0; i < typeChartOffensive.normal.length; i++) { // normal
         var row = document.getElementById("tr_normal");
         var x = row.insertCell(i+1);
-        if (i == 0) {
-            var mult = typeChartOffensive.normal[i].normal;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 1) {
-            var mult = typeChartOffensive.normal[i].fire;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 2) {
-            var mult = typeChartOffensive.normal[i].water;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 3) {
-            var mult = typeChartOffensive.normal[i].electric;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 4) {
-            var mult = typeChartOffensive.normal[i].grass;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 5) {
-            var mult = typeChartOffensive.normal[i].ice;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 6) {
-            var mult = typeChartOffensive.normal[i].fighting;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 7) {
-            var mult = typeChartOffensive.normal[i].poison;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 8) {
-            var mult = typeChartOffensive.normal[i].ground;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 9) {
-            var mult = typeChartOffensive.normal[i].flying;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 10) {
-            var mult = typeChartOffensive.normal[i].psychic;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 11) {
-            var mult = typeChartOffensive.normal[i].bug;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 12) {
-            var mult = typeChartOffensive.normal[i].rock;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 13) {
-            var mult = typeChartOffensive.normal[i].ghost;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 14) {
-            var mult = typeChartOffensive.normal[i].dragon;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 15) {
-            var mult = typeChartOffensive.normal[i].dark;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 16) {
-            var mult = typeChartOffensive.normal[i].steel;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 17) {
-            var mult = typeChartOffensive.normal[i].fairy;
-            console.log(mult);
-            x.innerHTML = mult;
+        x.innerHTML = typeChartOffensive.normal[i];;
+    
+        if (typeChartOffensive.normal[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.normal[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.normal[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.fire.length; i++) { // fire
+        var row = document.getElementById("tr_fire");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.fire[i];;
+        
+        if (typeChartOffensive.fire[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.fire[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.fire[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.water.length; i++) { // water
+        var row = document.getElementById("tr_water");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.water[i];
+
+        if (typeChartOffensive.water[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.water[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.water[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.electric.length; i++) { // electric
+        var row = document.getElementById("tr_electric");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.electric[i];
+
+        if (typeChartOffensive.electric[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.electric[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.electric[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.grass.length; i++) { // grass
+        var row = document.getElementById("tr_grass");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.grass[i];;
+    
+        if (typeChartOffensive.grass[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.grass[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.grass[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.ice.length; i++) { // ice
+        var row = document.getElementById("tr_ice");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.ice[i];;
+    
+        if (typeChartOffensive.ice[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.ice[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.ice[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.fighting.length; i++) { // fighting
+        var row = document.getElementById("tr_fighting");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.fighting[i];;
+    
+        if (typeChartOffensive.fighting[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.fighting[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.fighting[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.poison.length; i++) { // poison
+        var row = document.getElementById("tr_poison");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.poison[i];;
+    
+        if (typeChartOffensive.poison[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.poison[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.poison[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.ground.length; i++) { // ground
+        var row = document.getElementById("tr_ground");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.ground[i];;
+    
+        if (typeChartOffensive.ground[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.ground[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.ground[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.flying.length; i++) { // flying
+        var row = document.getElementById("tr_flying");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.flying[i];;
+    
+        if (typeChartOffensive.flying[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.flying[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.flying[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.psychic.length; i++) { // psychic
+        var row = document.getElementById("tr_psychic");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.psychic[i];;
+    
+        if (typeChartOffensive.psychic[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.psychic[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.psychic[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.bug.length; i++) { // bug
+        var row = document.getElementById("tr_bug");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.bug[i];;
+    
+        if (typeChartOffensive.bug[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.bug[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.bug[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.rock.length; i++) { // rock
+        var row = document.getElementById("tr_rock");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.rock[i];;
+    
+        if (typeChartOffensive.rock[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.rock[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.rock[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.ghost.length; i++) { // ghost
+        var row = document.getElementById("tr_ghost");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.ghost[i];;
+    
+        if (typeChartOffensive.ghost[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.ghost[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.ghost[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        };
+    }
+    for (var i = 0; i < typeChartOffensive.dragon.length; i++) { // dragon
+        var row = document.getElementById("tr_dragon");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.dragon[i];;
+    
+        if (typeChartOffensive.dragon[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.dragon[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.dragon[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.dark.length; i++) { // dark
+        var row = document.getElementById("tr_dark");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.dark[i];;
+    
+        if (typeChartOffensive.dark[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.dark[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.dark[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.steel.length; i++) { // steel
+        var row = document.getElementById("tr_steel");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.steel[i];;
+    
+        if (typeChartOffensive.steel[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.steel[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.steel[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
+        }
+    }
+    for (var i = 0; i < typeChartOffensive.fairy.length; i++) { // fairy
+        var row = document.getElementById("tr_fairy");
+        var x = row.insertCell(i+1);
+        x.innerHTML = typeChartOffensive.fairy[i];;
+    
+        if (typeChartOffensive.fairy[i] == 0) { // immune
+            x.classList.add("immune");
+        } else if (typeChartOffensive.fairy[i] == 1/2) { // not very effective
+            x.innerHTML = '½';
+            x.classList.add("not-very-effective");
+        } else if (typeChartOffensive.fairy[i] == 2) { // super effective
+            x.classList.add("super-effective");
+        } else { // normal
+            x.classList.add("normal-dmg");
         }
     }
 
-    for (var i = 0; i < typeChartOffensive.fire.length; i++) {
-        var row = document.getElementById("tr_fire");
-        var x = row.insertCell(i+1);
-        if (i == 0) {
-            var mult = typeChartOffensive.fire[i].normal;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 1) {
-            var mult = typeChartOffensive.fire[i].fire;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 2) {
-            var mult = typeChartOffensive.fire[i].water;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 3) {
-            var mult = typeChartOffensive.fire[i].electric;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 4) {
-            var mult = typeChartOffensive.fire[i].grass;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 5) {
-            var mult = typeChartOffensive.fire[i].ice;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 6) {
-            var mult = typeChartOffensive.fire[i].fighting;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 7) {
-            var mult = typeChartOffensive.fire[i].poison;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 8) {
-            var mult = typeChartOffensive.fire[i].ground;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 9) {
-            var mult = typeChartOffensive.fire[i].flying;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 10) {
-            var mult = typeChartOffensive.fire[i].psychic;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 11) {
-            var mult = typeChartOffensive.fire[i].bug;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 12) {
-            var mult = typeChartOffensive.fire[i].rock;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 13) {
-            var mult = typeChartOffensive.fire[i].ghost;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 14) {
-            var mult = typeChartOffensive.fire[i].dragon;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 15) {
-            var mult = typeChartOffensive.fire[i].dark;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 16) {
-            var mult = typeChartOffensive.fire[i].steel;
-            console.log(mult);
-            x.innerHTML = mult;
-        } else if (i == 17) {
-            var mult = typeChartOffensive.fire[i].fairy;
-            console.log(mult);
-            x.innerHTML = mult;
-        }
-    }
+
     function myFunction() {
       var x = document.getElementById("myTable").rows.length;
       document.getElementById("demo").innerHTML = "Found " + x + " tr elements in the table.";
