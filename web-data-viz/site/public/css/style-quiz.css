@@ -1,0 +1,118 @@
+.main {
+    /* height: fit-content; */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #354C73 0%, #8D99AE 53.12%, #354C73 100%); 
+}
+
+
+.titulo {
+    position: absolute;
+    color: #2B2D42;
+    font-weight: 700;
+    font-size: 48px;
+    opacity: 1;
+    position: static;
+    margin-top: 20px;
+}
+
+.box {
+    width: 50vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #EDF2F4;
+    border-radius: 20px;
+    /* padding-bottom: 50px; */
+}
+
+.main .box .content {
+    width: 80%;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+#score {
+    width: 95%;
+    text-align: start;
+    margin-top: 20px;
+}
+
+#pokemonImg {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 30px;
+}
+
+#options {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+}
+
+.btn_quiz {
+    width: 150px;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 20px;
+    color: #2B2D42;
+    background-color: #EDF2F4;
+    border: solid 1px #2B2D42;
+    transition: 0.3s;
+}
+
+.btn_quiz:hover {
+    scale: 1.1;
+    color: #EDF2F4;
+    background-color: #2B2D42;
+}
+
+#alerta {
+    background-color: #EDF2F4;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#terminarJogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #2b2d42d0;
+    color: #EDF2F4;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.btn_fimJogo {
+    
+    width: 150px;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 20px;
+    color: #2B2D42;
+    background-color: #EDF2F4;
+    border: solid 1px #2B2D42;
+    transition: 0.3s;   
+}
+
+.btn_fimJogo:hover {
+    scale: 1.1;
+    color: #EDF2F4;
+    background-color: #2B2D42;
+}

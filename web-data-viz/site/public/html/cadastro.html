@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style-form.css">
-    <title>Document</title>
+    <title>Pokeinfo | Cadastro</title>
 </head>
 <header>
     <div class="container">
@@ -42,14 +42,20 @@
     <div class="box">
         <div class="form">
             <div class="container">
+                <span style="font-size: 48px; color: #EDF2F4; font-weight: bold; margin-bottom: 20px;">Cadastro</span>
+                <br>
                 <label for="ipt_nome">Nome</label>
                 <input id="ipt_nome" class="form_input" type="text">
                 <label for="ipt_email">Email</label>
                 <input id="ipt_email" class="form_input" type="text">
+                <label for="ipt_cep">CEP</label>
+                <input id="ipt_cep" class="form_input" type="text" maxlength="8">
+                <label for="ipt_numero">Número</label>
+                <input id="ipt_numero" class="form_input" type="number">
                 <label for="ipt_senha">Senha</label>
-                <input id="ipt_senha" class="form_input" type="text">
+                <input id="ipt_senha" class="form_input" type="password">
                 <label for="ipt_confSenha">Confirmar Senha</label>
-                <input id="ipt_confSenha" class="form_input" type="text">
+                <input id="ipt_confSenha" class="form_input" type="password">
                 <button class="form_button" onclick="cadastrar()">Cadastrar</button>
             </div>
         </div>
@@ -66,60 +72,71 @@
         // Agora vá para o método fetch logo abaixo
         var nomeVar = ipt_nome.value;
         var emailVar = ipt_email.value;
+        var cepVar = ipt_cep.value;
+        var numeroVar = ipt_numero.value;
         var senhaVar = ipt_senha.value;
-        var confirmacaoSenhaVar = ipt_confSenha.value;
+        var confSenhaVar = ipt_confSenha.value;
+        var erro = false;
+        if (nomeVar == "" || emailVar == "" || cepVar == "" || numeroVar == "" || senhaVar == "" || confSenhaVar == "") {
+            alert("Preecnha todos os campos");
+            erro = true;
+        } else if (nomeVar.length < 3) {
+            alert("Nome Inválido \n O nome deve ter ao menos 3 letras");
+            erro = true;
+        } else if (emailVar.indexOf('@') == -1 || emailVar.indexOf('.') == -1) {
+            alert("Email Inválido \n O Email deve conter '@' e '.");
+            erro = true;
+        } else if (cepVar.length != 8) {
+            alert("CEP Inválido \n O CEP deve conter 8 dígitos");
+            erro = true;
+        } else if (senhaVar != confSenhaVar) {
+            alert("Senha Inválida \n As senhas diferem");
+            erro = true;
+        } 
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-            // cardErro.style.display = "block"
-            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        if (erro == false) {
 
-            
+            // Enviando o valor da nova input
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nomeVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                    cepServer: cepVar,
+                    numeroServer: numeroVar
+                })
+            }).then(function (resposta) {
+    
+                console.log("resposta: ", resposta);
+    
+                if (resposta.ok) {
+                    // cardErro.style.display = "block";
+    
+                    console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
+    
+                    setTimeout(() => {
+                        window.location = "../html/login.html";
+                    }, "2000")
+    
+                    
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                
+            });
+    
             return false;
         }
-        else {
-            // setInterval(sumirMensagem, 5000)
-        }
-
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                // cardErro.style.display = "block";
-
-                console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
-
-                setTimeout(() => {
-                    window.location = "../html/login.html";
-                }, "2000")
-
-                
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            
-        });
-
-        return false;
     }
 
-    // function sumirMensagem() {
-    //     cardErro.style.display = "none"
-    // }
+
 
 </script>

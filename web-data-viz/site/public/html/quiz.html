@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style-quiz.css">
+    <title>Pokeinfo | Quiz</title>
+</head>
+<body>
+    <div id="terminarJogo" style="display: none;">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <span>FIM DE JOGO</span>
+            <span id="pontos_usr"></span>
+            <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+                <a href="../html/dashboard.html">
+                    <button class="btn_fimJogo">Voltar</button>
+                </a>
+                <button class="btn_fimJogo" onclick="fetchPokemonQuiz()">Jogar novamente</button>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div id="conteudo" class="box">
+            <span id="score">Pontos: 0</span>
+            <img id="pokemonImg" src="" alt="pokemonImg">
+            <div class="content">
+                <div id="options">
+                    <!-- <button id="opt1">pokemonName</button>
+                    <button id="opt2">pokemonName</button>
+                    <button id="opt3">pokemonName</button>
+                    <button id="opt4">pokemonName</button> -->
+                </div>
+            </div>
+            <div id="alerta"></div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    var pokemonOption = [];
+    var pontos = 0;
+    var answer = '';
+
+    fetchPokemonQuiz();
+
+    async function fetchPokemonQuiz() {
+        pokemonOption = [];
+        answer = '';
+        options.innerHTML = '';
+        alerta.style.background = '#EDF2F4'
+        terminarJogo.style.display = 'none';
+        pontos_usr.innerHTML = ''
+
+        for (i = 0; i < 4; i++) {
+            var rndPokemon = Math.floor(Math.random() * 1009 + 1);
+            console.log(rndPokemon);
+            var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${rndPokemon}`);
+            var data = await response.json();
+            if (i == 0) {
+                pokemonImg.src = data['sprites']['other']['official-artwork']['front_default'];
+                pokemonOption.push(data.name);
+                answer = data.name
+                console.log(i);
+            } else {
+                pokemonOption.push(data.name);
+                console.log(i);
+            }   
+        }
+        console.log(pokemonOption);
+        for (i = 0; i < 4; i++) {
+            if (i == 0) {
+                var rnd_number = Math.floor(Math.random() * 3);
+                console.log(rnd_number);
+                options.innerHTML += `<button onclick="resposta(1)" class="btn_quiz" id="opt${i+1}">${pokemonOption[rnd_number]}</button>`;
+                var splice = pokemonOption.splice(rnd_number,1);  
+            } else if (i == 1) {
+                var rnd_number = Math.floor(Math.random() * 2);
+                console.log(rnd_number);
+                options.innerHTML += `<button onclick="resposta(2)" class="btn_quiz" id="opt${i+1}">${pokemonOption[rnd_number]}</button>`;
+                var splice = pokemonOption.splice(rnd_number,1);  
+            } else if (i == 2) {
+                var rnd_number = Math.floor(Math.random());
+                console.log(rnd_number);
+                options.innerHTML += `<button onclick="resposta(3)" class="btn_quiz" id="opt${i+1}">${pokemonOption[rnd_number]}</button>`;
+                var splice = pokemonOption.splice(rnd_number,1);  
+            } else {
+                options.innerHTML += `<button onclick="resposta(4)" class="btn_quiz" id="opt${i+1}">${pokemonOption[0]}</button>`;
+            }
+        } 
+    }
+
+    function resposta(num) {
+        console.log("Cheguei")
+        if (num == 1) {
+            var resposta_usr = opt1.innerHTML
+        } else if (num == 2) {
+            var resposta_usr = opt2.innerHTML
+        } else if (num == 3) {
+            var resposta_usr = opt3.innerHTML
+        } else {
+            var resposta_usr = opt4.innerHTML
+        }
+        console.log(resposta_usr)
+        if (answer == resposta_usr) {
+            alerta.style.background = 'green'
+            pontos++;
+            score.innerHTML = `Pontos: ${pontos}`
+            setTimeout(()=>{fetchPokemonQuiz()}, 2000);
+        } else {
+            alerta.style.background = 'red'
+            setTimeout(()=>{encerrar()}, 2000);
+        }
+    }
+
+    function encerrar() {
+        pontos_usr.innerHTML += `Pontuação: ${pontos}`
+        terminarJogo.style.display = 'flex';
+        pontos = 0;
+        score.innerHTML = `Pontos: ${pontos}`
+    }
+</script>

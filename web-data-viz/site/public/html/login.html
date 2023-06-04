@@ -42,6 +42,8 @@
     <div class="box">
         <div class="form">
             <div class="container">
+                <span style="font-size: 48px; color: #EDF2F4; font-weight: bold; margin-bottom: 20px;">Login</span>
+                <br>
                 <label for="ipt_email">Email</label>
                 <input id="ipt_email" class="form_input" type="text">
                 <label for="ipt_senha">Senha</label>
@@ -64,9 +66,7 @@
         var senhaVar = ipt_senha.value;
 
         if (emailVar == "" || senhaVar == "") {
-            // cardErro.style.display = "block"
-            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            // finalizarAguardar();
+            alert("Preecnha todos os campos");
             return false;
         }
         else {
@@ -96,9 +96,7 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
+                    sessionStorage.ID_USUARIO = json.idUsuario;
                     setTimeout(function () {
                         window.location = "../html/dashboard.html";
                     }, 1000); // apenas para exibir o loading

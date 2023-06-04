@@ -9,22 +9,26 @@ input {
 }
 
 .box {
-    height: 90vh;
+    height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 100px;
+    margin-top: 80px;
 }
 
 .form {
     background-color: #2B2D42;
-    height: 600px;
+    height: fit-content;
     width: 800px;
     display: flex;
     align-items: center;
     border-radius: 20px;
+    padding: 20px;
 }
 
 .form .container {
+    width: 70%;
     flex-direction: column;
     justify-content: center;
     align-items: center; 
