@@ -1,35 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style-dashboard.css">
     <title>Document</title>
 </head>
+
 <body>
     <div class="main">
         <div id="conteudo" class="box">
             <span class="titulo">Olá, <span id="nome_usuario" class="red_text"></span></span>
             <div class="content">
                 <div id="div_jogar">
-                    <span>Teste seus conhecimentos sobre Pokémon</span>
+                    <span class="subtitulo">Teste seus conhecimentos sobre Pokémon</span>
                     <a href="../html/quiz.html">
                         <button id="btn_jogar">Jogar</button>
                     </a>
                 </div>
                 <div id="div_kpi">
-                    <span>KPI pontuação média</span>
-                    <span>KPI melhor pontuação</span>
+                    <div class="kpi">
+                        <span>Pontuação Média</span>
+                        <span class="pts_kpi" id="pts_media"></span>
+                    </div>
+                    <div class="kpi">
+                        <span>Melhor Pontuação</span>
+                        <span class="pts_kpi" id="pts_max"></span>
+                    </div>
                 </div>
-                <span>Histórico dos últimos 10 jogos</span>
+                <div
+                    style="height: 100%; width: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <span class="subtitulo">Histórico dos últimos 10 jogos</span>
+                    <canvas id="myChartCanvas" height="250"></canvas>
+                </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
 
 <script>
     nome_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    obterDadosGrafico(sessionStorage.ID_USUARIO);
+    obterDadosKpi(sessionStorage.ID_USUARIO);
+
+    function obterDadosGrafico(idUsuario) {
+
+        // alterarTitulo(idUsuario)
+
+        // if (proximaAtualizacao != undefined) {
+        //     clearTimeout(proximaAtualizacao);
+        // }
+
+        fetch(`/medidas/ultimas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function obterDadosKpi(idUsuario) {
+        fetch(`/medidas/kpi/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    kpi(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta) {
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        // let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: [1,2,3,4,5,6,7,8,9,10],
+            datasets: [{
+                label: 'Pontos',
+                data: [],
+                fill: false,
+                borderColor: '#EF233C',
+                backgroundColor: '#EF233C',
+                tension: 0.1
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            // labels.push(registro.id);
+            dados.datasets[0].data.push(registro.pontos);;
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        // console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'line',
+            data: dados,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas`),
+            config
+        );
+
+        // setTimeout(() => atualizarGrafico(idUsuario, dados, myChart), 2000);
+    }
+
+    function kpi(resposta) {
+        console.log("KPI's");
+        pts_media.innerHTML += `${resposta[0].media}`;
+        pts_max.innerHTML += `${resposta[0].max}`;
+        console.log('Média: ' + resposta[0].media);
+        console.log('Máximo: ' + resposta[0].max);
+    }
 </script>
