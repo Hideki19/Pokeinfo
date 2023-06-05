@@ -1,0 +1,226 @@
+.main {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #354C73 0%, #8D99AE 53.12%, #354C73 100%); 
+    padding-bottom: 20px;
+}
+
+.box {
+    width: 1100px;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 100px;
+    margin-top: 50px;
+}
+
+.titulo {
+    position: static;
+    margin-top: 5%;
+}
+
+.subtitulo {
+    font-size: 20px;
+    color: #2B2D42;;
+}
+
+.gen_card {
+    width: 300px;
+    height: 300px;
+}
+
+.gen_card_titulo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #EDF2F4;;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+}
+
+#kanto {
+    position: relative;
+    background-color: black;
+}
+
+#kanto::before {
+    content: "";
+    position: absolute;
+    background-size: 100%;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url("../assets/kanto.png");
+    opacity: 0.5;
+}
+
+#jotho {
+    position: relative;
+    background-color: black;
+}
+
+#jotho::before {
+    content: "";
+    position: absolute;
+    background-size: 100%;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url("../assets/jotho.png");
+    opacity: 0.5;
+}
+
+#hoenn {
+    position: relative;
+    background-color: black;
+}
+
+#hoenn::before {
+    content: "";
+    position: absolute;
+    background-size: 100%;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url("../assets/hoenn.png");
+    opacity: 0.5;
+}
+
+#sinnoh {
+    position: relative;
+    background-color: black;
+}
+
+#sinnoh::before {
+    content: "";
+    position: absolute;
+    background-size: 100%;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url("../assets/sinnoh.png");
+    opacity: 0.5;
+}
+
+#unova {
+    position: relative;
+    background-color: black;
+}
+
+#unova::before {
+    content: "";
+    position: absolute;
+    background-size: 100%;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url("../assets/unova.png");
+    opacity: 0.5;
+}
+
+#kalos {
+    position: relative;
+    background-color: black;
+}
+
+#kalos::before {
+    content: "";
+    position: absolute;
+    background-size: 100%;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url("../assets/kalos.png");
+    opacity: 0.5;
+}
+
+#alola {
+    position: relative;
+    background-color: black;
+}
+
+#alola::before {
+    content: "";
+    position: absolute;
+    background-size: 100%;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url("../assets/alola.png");
+    opacity: 0.5;
+}
+
+#galar {
+    position: relative;
+    background-color: black;
+}
+
+#galar::before {
+    content: "";
+    position: absolute;
+    background-size: 100%;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url("../assets/galar.png");
+    opacity: 0.5;
+}
+
+#paldea {
+    position: relative;
+    background-color: black;
+}
+
+#paldea::before {
+    content: "";
+    position: absolute;
+    background-size: 100%;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url("../assets/paldea.png");
+    opacity: 0.5;
+}

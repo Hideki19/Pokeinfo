@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style-pokedex.css">
 </head>
-<header>
+<header id="header">
     <div class="container">
         <div id="logo">
             <a href="../index.html">
@@ -19,10 +19,10 @@
             </a>
         </div>
         <ul id="ul_header">
-            <a href="/html/pokedex.html">
+            <a href="../html/pokedex.html">
                 <li style="color: #D90429; font-weight: 600;">Pokédex</li>
             </a>
-            <a href="google.com">
+            <a href="../html/geracoes.html">
                 <li>Gerações</li>
             </a>
             <a href="../html/type-chart.html">
@@ -40,9 +40,9 @@
     </div>
 </header>
 <body>
-    <div id="loading" class="wrapper">
+    <!-- <div id="loading" class="wrapper">
         <div class="pokeball">
-    </div>
+    </div> -->
     </div>
     <div class="main">
         <span class="titulo"><span class="red_text">Poké</span>dex</span>
@@ -108,6 +108,33 @@
 </html>
 
 <script>
+    var user = sessionStorage.NOME_USUARIO;
+
+if (user != undefined) {
+    header.innerHTML = `<header id="header">
+<div class="container">
+    <div id="logo">
+        <a href="../index.html">
+            <img src="../assets/logo.png" alt="Logo" style="height: 100%;">
+        </a>
+    </div>
+    <ul id="ul_header">
+        <a href="../html/pokedex.html">
+            <li style="color: #D90429; font-weight: 600;">Pokédex</li>
+        </a>
+        <a href="../html/geracoes.html">
+            <li>Gerações</li>
+        </a>
+        <a href="../html/type-chart.html">
+            <li>Type Chart</li>
+        </a>
+        <a href="../html/dashboard.html">
+            <img style="height: 70px;" src="../assets/toppng.com-app-icon-set-login-icon-comments-avatar-icon-980x980.png" alt="">
+        </a>
+    </ul>
+</div>
+</header>`
+}
     datalistPokemon();
     
     var typeChartDefensive = {

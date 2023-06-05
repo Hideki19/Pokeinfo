@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Home</title>
 </head>
-<header>
+<header id="header">
     <div class="container">
         <img id="logo" src="assets/logo.png" alt="">
         <ul id="ul_header">
@@ -91,3 +91,33 @@
 </body>
 
 </html>
+
+<script>
+        var user = sessionStorage.NOME_USUARIO;
+
+if (user != undefined) {
+    header.innerHTML = `<header id="header">
+<div class="container">
+    <div id="logo">
+        <a href="../index.html">
+            <img src="../assets/logo.png" alt="Logo" style="height: 100%;">
+        </a>
+    </div>
+    <ul id="ul_header">
+        <a href="/html/pokedex.html">
+            <li>Pokédex</li>
+        </a>
+        <a href="google.com">
+            <li>Gerações</li>
+        </a>
+        <a href="/html/type-chart.html">
+            <li style="color: #D90429; font-weight: 600;">Type Chart</li>
+        </a>
+        <a href="../html/dashboard.html">
+            <img style="height: 70px;" src="../assets/toppng.com-app-icon-set-login-icon-comments-avatar-icon-980x980.png" alt="">
+        </a>
+    </ul>
+</div>
+</header>`
+}
+</script>

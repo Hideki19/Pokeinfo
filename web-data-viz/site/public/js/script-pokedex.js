@@ -1,12 +1,12 @@
 var fetchPokemonStats = [];
 
 async function datalistPokemon() { // Tentar colocar um card de aviso de como procurar alolan, galarian, hisuian forms
-    for (i = 0; i < 1010; i++) {
-        var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i+1}`);
+    for (index = 0; index < 1010; index++) {
+        var response = await fetch(`https://pokeapi.co/api/v2/pokemon/${index+1}`);
         var data =  await response.json();
         listPokemon.innerHTML += `<option>${data.name}</option>`; 
-        if (i%100 == 0) {
-            console.log("Estou em " + i);
+        if (index%100 == 0) {
+            console.log("Estou em " + index);
         }
     }
     console.log("Acabou");
