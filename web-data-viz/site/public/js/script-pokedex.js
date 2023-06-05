@@ -10,9 +10,9 @@ async function datalistPokemon() { // Tentar colocar um card de aviso de como pr
         }
     }
     console.log("Acabou");
-    loading.style.display = 'none'
-    iptPokemon.focus();
-    fetchPokemon(1);
+    // loading.style.display = 'none'
+    // iptPokemon.focus();
+    // fetchPokemon(1);
 }
 
 function randomPokemon() {

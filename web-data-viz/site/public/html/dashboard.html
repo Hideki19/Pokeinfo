@@ -21,14 +21,14 @@
                 <a href="../html/pokedex.html">
                     <li>Pokédex</li>
                 </a>
-                <a href="../html/geracoes_.html">
+                <a href="../html/geracoes.html">
                     <li>Gerações</li>
                 </a>
                 <a href="../html/type-chart.html">
                     <li>Type Chart</li>
                 </a>
                 <div id="header_buttons">
-                    <a href="../index.html">
+                    <a onclick="limparSessao()" href="../index.html">
                         <li id="btn_logout">Logout</li>
                     </a>
                 </div>
@@ -186,5 +186,11 @@
         pts_max.innerHTML += `${resposta[0].max}`;
         console.log('Média: ' + resposta[0].media);
         console.log('Máximo: ' + resposta[0].max);
+    }
+
+    function limparSessao () {
+        sessionStorage.removeItem("NOME_USUARIO");
+        sessionStorage.removeItem("EMAIL_USUARIO");
+        sessionStorage.removeItem("ID_USUARIO");
     }
 </script>
