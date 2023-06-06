@@ -1,3 +1,8 @@
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
 * {
     margin: 0;
     font-family: 'Hind', sans-serif;
@@ -121,7 +126,9 @@ header .container #ul_header #header_buttons #btn_cadastrar{
     bottom: 0px;
     left: 0px; 
     opacity: 0.5;
+    background-size: cover;
 }
+
 
 .titulo {
     position: absolute;
